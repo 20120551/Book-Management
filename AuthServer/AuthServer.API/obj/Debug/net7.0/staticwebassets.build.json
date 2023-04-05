@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "Hash": "WP22GFVcd2WiZht8ZiV1Ee38gHghanGH31frT6sOcjU=",
+  "Source": "AuthServer.API",
+  "BasePath": "_content/AuthServer.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "AuthServer.API\\wwwroot",
+      "Source": "AuthServer.API",
+      "ContentRoot": "D:\\SOURCE CODE\\Project\\MovieManagement\\AuthServer\\AuthServer.API\\wwwroot\\",
+      "BasePath": "_content/AuthServer.API",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\SOURCE CODE\\Project\\MovieManagement\\AuthServer\\AuthServer.API\\wwwroot\\.well-known\\jwks.json",
+      "SourceId": "AuthServer.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SOURCE CODE\\Project\\MovieManagement\\AuthServer\\AuthServer.API\\wwwroot\\",
+      "BasePath": "_content/AuthServer.API",
+      "RelativePath": ".well-known/jwks.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\.well-known\\jwks.json"
+    },
+    {
+      "Identity": "D:\\SOURCE CODE\\Project\\MovieManagement\\AuthServer\\AuthServer.API\\wwwroot\\Templates\\ActivatedAccountTemplate.html",
+      "SourceId": "AuthServer.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SOURCE CODE\\Project\\MovieManagement\\AuthServer\\AuthServer.API\\wwwroot\\",
+      "BasePath": "_content/AuthServer.API",
+      "RelativePath": "Templates/ActivatedAccountTemplate.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Templates\\ActivatedAccountTemplate.html"
+    },
+    {
+      "Identity": "D:\\SOURCE CODE\\Project\\MovieManagement\\AuthServer\\AuthServer.API\\wwwroot\\Templates\\ForgotPasswordTemplate.html",
+      "SourceId": "AuthServer.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SOURCE CODE\\Project\\MovieManagement\\AuthServer\\AuthServer.API\\wwwroot\\",
+      "BasePath": "_content/AuthServer.API",
+      "RelativePath": "Templates/ForgotPasswordTemplate.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Templates\\ForgotPasswordTemplate.html"
+    }
+  ]
+}

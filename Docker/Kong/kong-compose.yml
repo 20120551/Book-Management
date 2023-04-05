@@ -1,0 +1,77 @@
+version: "3"
+
+services:
+  kong-database:
+    image: postgres:9.6
+    restart: always
+    networks:
+      - moviemanagementnet
+    environment:
+      POSTGRES_USER: kong
+      POSTGRES_DB: kong
+      POSTGRES_PASSWORD: kong
+    ports:
+      - "5432:5432"
+    volumes:
+      - kong_data:/var/lib/postgresql/data
+
+  kong-migration:
+    image: kong:latest
+    command: "kong migrations bootstrap"
+    networks:
+      - moviemanagementnet
+    restart: on-failure
+    environment:
+      KONG_PG_HOST: kong-database
+      KONG_PG_USER: kong
+      KONG_PG_PASSWORD: kong
+    links:
+      - kong-database
+    depends_on:
+      - kong-database
+
+  kong:
+    build: .
+    # user: "${KONG_USER:-kong}"
+    container_name: kong
+    restart: always
+    networks:
+      - moviemanagementnet
+    environment:
+      # this variable use database=off
+      # KONG_DATABASE: 'off'
+      # KONG_DECLARATIVE_CONFIG: /etc/kong/declarative/kong.yml
+      KONG_PG_HOST: kong-database
+      KONG_PG_USER: kong
+      KONG_PG_PASSWORD: kong
+      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+      KONG_ADMIN_ERROR_LOG: /dev/stderr
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+      KONG_PROXY_LISTEN: 0.0.0.0:8000
+      KONG_ADMIN_LISTEN: 0.0.0.0:8001
+      # enable js plugin
+      KONG_PLUGINSERVER_NAMES: js
+      KONG_PLUGINSERVER_JS_SOCKET: /usr/local/kong/js_pluginserver.sock
+      KONG_PLUGINSERVER_JS_START_CMD: /usr/local/bin/kong-js-pluginserver -v --plugins-directory /usr/local/kong/js-plugins
+      KONG_PLUGINSERVER_JS_QUERY_CMD: /usr/local/bin/kong-js-pluginserver --plugins-directory /usr/local/kong/js-plugins --dump-all-plugins
+      # Allow plugins to be used. The plugin name is your JS file name e.g. hello.js
+      KONG_PLUGINS: bundled, rbac_jwt
+    depends_on:
+      - kong-migration
+      - kong-database
+    volumes:
+      - ./plugins:/usr/local/kong/js-plugins
+      - ./kong.yml:/home/kong/kong.yml
+      - ./kong.conf:/etc/kong/kong.conf
+      # - ./kong.yml:/etc/kong/declarative/kong.yml
+    ports:
+      - "8001:8001"
+      - "8000:8000"
+
+networks:
+  moviemanagementnet:
+    external: true
+
+volumes:
+  kong_data: {}

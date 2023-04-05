@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\SOURCE CODE\\Project\\MovieManagement\\AuthServer\\AuthServer.API\\wwwroot\\.well-known\\jwks.json",
+      "PackagePath": "staticwebassets\\.well-known\\jwks.json"
+    },
+    {
+      "Id": "D:\\SOURCE CODE\\Project\\MovieManagement\\AuthServer\\AuthServer.API\\wwwroot\\Templates\\ActivatedAccountTemplate.html",
+      "PackagePath": "staticwebassets\\Templates\\ActivatedAccountTemplate.html"
+    },
+    {
+      "Id": "D:\\SOURCE CODE\\Project\\MovieManagement\\AuthServer\\AuthServer.API\\wwwroot\\Templates\\ForgotPasswordTemplate.html",
+      "PackagePath": "staticwebassets\\Templates\\ForgotPasswordTemplate.html"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.AuthServer.API.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.AuthServer.API.props",
+      "PackagePath": "build\\AuthServer.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.AuthServer.API.props",
+      "PackagePath": "buildMultiTargeting\\AuthServer.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.AuthServer.API.props",
+      "PackagePath": "buildTransitive\\AuthServer.API.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
