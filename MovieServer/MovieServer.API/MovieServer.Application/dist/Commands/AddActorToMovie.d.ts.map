@@ -1,0 +1,1 @@
+{"version":3,"file":"AddActorToMovie.d.ts","sourceRoot":"","sources":["../../src/Commands/AddActorToMovie.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,kBAAkB,CAAC;AAE5C,MAAM,CAAC,OAAO,OAAO,eAAgB,YAAW,QAAQ;IAOzC,EAAE,EAAE,MAAM;IACV,IAAI,EAAE,MAAM;IACZ,IAAI,EAAE,MAAM;IARvB;;OAEG;gBAIQ,EAAE,EAAE,MAAM,EACV,IAAI,EAAE,MAAM,EACZ,IAAI,EAAE,MAAM;CAI1B"}

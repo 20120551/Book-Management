@@ -1,0 +1,20 @@
+{
+    "files": [],
+    "references": [
+        {
+            "path": "./MovieServer.Domain",
+        },
+        {
+            "path": "./MovieServer.Shared",
+        },
+        {
+            "path": "./MovieServer.Application"
+        },
+        {
+            "path": "./MovieServer.Shared/node_modules"
+        },
+        {
+            "path": "./MovieServer.Infrastructure"
+        }
+    ]
+}

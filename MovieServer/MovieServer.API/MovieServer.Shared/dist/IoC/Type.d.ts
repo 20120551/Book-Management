@@ -1,0 +1,26 @@
+export declare const TYPES: {
+    App: symbol;
+    MovieRepo: symbol;
+    ActorRepo: symbol;
+    MovieFactory: symbol;
+    ReadDbClient: symbol;
+    WriteDbClient: symbol;
+    AddActorToMovieHandler: symbol;
+    CreateMovieHandler: symbol;
+    RemoveActorFromMovieHandler: symbol;
+    RemoveMovieHandler: symbol;
+    UpdateMovieHandler: symbol;
+    GetMovieHandler: symbol;
+    GetMoviesHandler: symbol;
+    SearchMovieHandler: symbol;
+    ActorAddedEventHandler: symbol;
+    ActorRemovedEventHandler: symbol;
+    MovieCreatedEventHandler: symbol;
+    MovieUpdatedEventHandler: symbol;
+    MovieRemovedEventHandler: symbol;
+    Mapper: symbol;
+    AmqpClient: symbol;
+    Publisher: symbol;
+    Consumer: symbol;
+    Middleware: symbol;
+};

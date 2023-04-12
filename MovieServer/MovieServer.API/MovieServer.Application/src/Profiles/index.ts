@@ -1,0 +1,1 @@
+export { default as MovieProfile } from "./MovieProfile";
