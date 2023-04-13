@@ -5,10 +5,12 @@
     archieve that
 */
 
+import { IQuery } from "@Shared/Queries";
+
 export default interface IConsumer {
-    Subscribe<THandler>(
+    Subscribe<THandler extends IQuery<void>>(
         exchange: string,
         type: string,
         bindingKey: string,
-        handler: (data: THandler) => Promise<void | null>): Promise<void>;
+        handler: (message: THandler) => Promise<void>): Promise<void>;
 }

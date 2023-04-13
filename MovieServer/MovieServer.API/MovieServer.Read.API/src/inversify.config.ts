@@ -39,6 +39,7 @@ import { IConsumer } from "@Shared/Broker";
 import { IErrorMiddleware, IMiddleware } from "@Shared/Middleware";
 import { ErrorHandlingMiddleware, RequestLoggingMiddleware } from "@Read/Api/Middleware";
 
+import { IQueryDispatcher, QueryDispatcher } from "@Shared/Dispatcher/Queries";
 export const referenceDataIoCModule = new ContainerModule((bind) => {
     // add controller
     // RegisterController(bind, MovieController);
@@ -75,5 +76,9 @@ export const referenceDataIoCModule = new ContainerModule((bind) => {
 
     bind<ISearchMovieHandler>(TYPES.SearchMovieHandler)
         .to(SearchMovieHandler).inSingletonScope();
+
+    // add dispatcher
+    bind<IQueryDispatcher>(TYPES.QueryDispatcher)
+        .to(QueryDispatcher).inSingletonScope();
 })
 

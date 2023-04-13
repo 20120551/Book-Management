@@ -4,7 +4,7 @@ import { IMovieRepo } from '@Domain/Repositories';
 import { AutoMapper } from "@Shared/AutoMapper";
 import { IPublisher } from "@Shared/Broker";
 export declare type IUpdateMovieHandler = ICommandHandler<UpdateMovie>;
-export default class UpdateMovieHandler implements ICommandHandler<UpdateMovie> {
+export default class UpdateMovieHandler implements IUpdateMovieHandler {
     private readonly _movieRepo;
     private readonly _mapper;
     private readonly _publisher;

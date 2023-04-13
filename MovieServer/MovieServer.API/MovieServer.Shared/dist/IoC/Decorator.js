@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Consumer = exports.Publisher = exports.AmqpClient = exports.Mapper = exports.MovieRemovedEventHandler = exports.MovieUpdatedEventHandler = exports.MovieCreatedEventHandler = exports.ActorRemovedEventHandler = exports.ActorAddedEventHandler = exports.SearchMovieHandler = exports.GetMoviesHandler = exports.GetMovieHandler = exports.UpdateMovieHandler = exports.RemoveMovieHandler = exports.RemoveActorFromMovieHandler = exports.CreateMovieHandler = exports.AddActorToMovieHandler = exports.MovieFactory = exports.ActorRepo = exports.MovieRepo = exports.WriteDbClient = exports.ReadDbClient = void 0;
+exports.QueryDispatcher = exports.CommandDispatcher = exports.InversifyContainer = exports.Consumer = exports.Publisher = exports.AmqpClient = exports.Mapper = exports.MovieRemovedEventHandler = exports.MovieUpdatedEventHandler = exports.MovieCreatedEventHandler = exports.ActorRemovedEventHandler = exports.ActorAddedEventHandler = exports.SearchMovieHandler = exports.GetMoviesHandler = exports.GetMovieHandler = exports.UpdateMovieHandler = exports.RemoveMovieHandler = exports.RemoveActorFromMovieHandler = exports.CreateMovieHandler = exports.AddActorToMovieHandler = exports.MovieFactory = exports.ActorRepo = exports.MovieRepo = exports.WriteDbClient = exports.ReadDbClient = void 0;
 const inversify_1 = require("inversify");
 const Type_1 = require("./Type");
 exports.ReadDbClient = (0, inversify_1.inject)(Type_1.TYPES.ReadDbClient);
@@ -26,3 +26,7 @@ exports.Mapper = (0, inversify_1.inject)(Type_1.TYPES.Mapper);
 exports.AmqpClient = (0, inversify_1.inject)(Type_1.TYPES.AmqpClient);
 exports.Publisher = (0, inversify_1.inject)(Type_1.TYPES.Publisher);
 exports.Consumer = (0, inversify_1.inject)(Type_1.TYPES.Consumer);
+// service collection
+exports.InversifyContainer = (0, inversify_1.inject)(Type_1.TYPES.InversifyContainer);
+exports.CommandDispatcher = (0, inversify_1.inject)(Type_1.TYPES.CommandDispatcher);
+exports.QueryDispatcher = (0, inversify_1.inject)(Type_1.TYPES.QueryDispatcher);

@@ -34,7 +34,8 @@ let Consumer = class Consumer {
             }
             const content = msg.content.toString();
             const jsonContent = JSON.parse(content);
-            await handler(jsonContent);
+            // Object.setPrototypeOf(jsonContent, THandler.prototype)
+            handler(jsonContent);
         }, { noAck: true });
     }
 };

@@ -13,6 +13,7 @@ const Events_1 = require("@Infrastructure/Read/Queries/Events");
 // import { RegisterController } from "@Shared/IoC/Utils";
 require("@Read/Api/Controllers");
 const Middleware_1 = require("@Read/Api/Middleware");
+const Queries_1 = require("@Shared/Dispatcher/Queries");
 exports.referenceDataIoCModule = new inversify_1.ContainerModule((bind) => {
     // add controller
     // RegisterController(bind, MovieController);
@@ -42,4 +43,7 @@ exports.referenceDataIoCModule = new inversify_1.ContainerModule((bind) => {
         .to(Handler_1.GetMoviesHandler).inSingletonScope();
     bind(IoC_1.TYPES.SearchMovieHandler)
         .to(Handler_1.SearchMovieHandler).inSingletonScope();
+    // add dispatcher
+    bind(IoC_1.TYPES.QueryDispatcher)
+        .to(Queries_1.QueryDispatcher).inSingletonScope();
 });

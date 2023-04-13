@@ -32,3 +32,9 @@ export const AmqpClient = inject(TYPES.AmqpClient);
 export const Publisher = inject(TYPES.Publisher);
 export const Consumer = inject(TYPES.Consumer);
 
+// service collection
+export const InversifyContainer = inject(TYPES.InversifyContainer);
+export const CommandDispatcher = inject(TYPES.CommandDispatcher);
+
+export const QueryDispatcher = inject(TYPES.QueryDispatcher);
+

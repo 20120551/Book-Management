@@ -1,1 +1,1 @@
-{"version":3,"file":"inversify.config.d.ts","sourceRoot":"","sources":["../src/inversify.config.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,eAAe,EAAE,MAAM,uBAAuB,CAAC;AAoCxD,OAAO,uBAAuB,CAAC;AAK/B,eAAO,MAAM,sBAAsB,iBAoCjC,CAAA"}
+{"version":3,"file":"inversify.config.d.ts","sourceRoot":"","sources":["../src/inversify.config.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,eAAe,EAAE,MAAM,uBAAuB,CAAC;AAoCxD,OAAO,uBAAuB,CAAC;AAM/B,eAAO,MAAM,sBAAsB,iBAwCjC,CAAA"}

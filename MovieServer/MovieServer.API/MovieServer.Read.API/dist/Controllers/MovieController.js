@@ -20,30 +20,25 @@ const IoC_1 = require("@Shared/IoC");
 const inversify_express_utils_1 = require("@Shared/Lib/inversify-express-utils");
 const express_1 = __importDefault(require("express"));
 let MovieController = class MovieController {
-    _getMovieHandler;
-    _getMoviesHandler;
-    _searchMovieHandler;
-    constructor(getMovieHandler, getMoviesHandler, searchMovieHandler) {
-        this._getMovieHandler = getMovieHandler;
-        this._getMoviesHandler = getMoviesHandler;
-        this._searchMovieHandler = searchMovieHandler;
+    _queryDispatcher;
+    constructor(queryDispatcher) {
+        this._queryDispatcher = queryDispatcher;
     }
     async GetPerPage(req, res) {
         const { page, take } = req.query;
-        //default page = 0 take = 10
         const query = new Queries_1.GetMovies(parseInt(page), parseInt(take));
-        const movies = await this._getMoviesHandler.HandleAsync(query);
+        const movies = await this._queryDispatcher.ExecuteAsync(query);
         return res.status(200).json(movies);
     }
     async Search(req, res) {
         const searchPhase = req.query.q;
         const query = new Queries_1.SearchMovie(searchPhase);
-        const movies = await this._searchMovieHandler.HandleAsync(query);
+        const movies = await this._queryDispatcher.ExecuteAsync(query);
         return res.status(200).json(movies);
     }
     async Get(req, res) {
         const query = new Queries_1.GetMovie(req.params.id);
-        const movie = await this._getMovieHandler.HandleAsync(query);
+        const movie = await this._queryDispatcher.ExecuteAsync(query);
         return res.status(200).json(movie);
     }
 };
@@ -73,9 +68,7 @@ __decorate([
 ], MovieController.prototype, "Get", null);
 MovieController = __decorate([
     (0, inversify_express_utils_1.controller)("/api/movie"),
-    __param(0, IoC_1.GetMovieHandler),
-    __param(1, IoC_1.GetMoviesHandler),
-    __param(2, IoC_1.SearchMovieHandler),
-    __metadata("design:paramtypes", [Object, Object, Object])
+    __param(0, IoC_1.QueryDispatcher),
+    __metadata("design:paramtypes", [Object])
 ], MovieController);
 exports.default = MovieController;

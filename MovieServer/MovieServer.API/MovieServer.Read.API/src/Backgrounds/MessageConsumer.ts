@@ -5,46 +5,25 @@ import {
     ActorAdded,
     ActorRemoved
 } from "@Application/Queries/Events";
-import {
-    IActorAddedEventHandler,
-    IActorRemovedEventHandler,
-    IMovieCreatedEventHandler,
-    IMovieRemovedEventHandler,
-    IMovieUpdatedEventHandler
-} from "@Infrastructure/Read/Queries/Events";
 import { IConsumer } from "@Shared/Broker";
+import { IQueryDispatcher } from "@Shared/Dispatcher/Queries";
 import {
-    ActorAddedEventHandler,
-    ActorRemovedEventHandler,
     Consumer,
     Injectable,
-    MovieCreatedEventHandler,
-    MovieRemovedEventHandler,
-    MovieUpdatedEventHandler
+    QueryDispatcher
 } from "@Shared/IoC";
 
 @Injectable
 export default class MessageConsumer {
-    private readonly _actorAddedEventHandler: IActorAddedEventHandler;
-    private readonly _actorRemovedEventHandler: IActorRemovedEventHandler;
-    private readonly _movieCreatedEventHandler: IMovieCreatedEventHandler;
-    private readonly _movieRemovedEventHandler: IMovieRemovedEventHandler;
-    private readonly _movieUpdatedEventHandler: IMovieUpdatedEventHandler;
+    private readonly _queryDispatcher: IQueryDispatcher;
     private readonly _consumer: IConsumer;
     constructor(
+        @QueryDispatcher queryDispatcher: IQueryDispatcher,
         @Consumer consumer: IConsumer,
-        @ActorAddedEventHandler actorAddedEventHandler: IActorAddedEventHandler,
-        @ActorRemovedEventHandler actorRemovedEventHandler: IActorRemovedEventHandler,
-        @MovieCreatedEventHandler movieCreatedEventHandler: IMovieCreatedEventHandler,
-        @MovieUpdatedEventHandler movieUpdatedEventHandler: IMovieUpdatedEventHandler,
-        @MovieRemovedEventHandler movieRemovedEventHandler: IMovieRemovedEventHandler,
     ) {
-        this._actorAddedEventHandler = actorAddedEventHandler;
-        this._actorRemovedEventHandler = actorRemovedEventHandler;
-        this._movieCreatedEventHandler = movieCreatedEventHandler;
-        this._movieRemovedEventHandler = movieRemovedEventHandler;
-        this._movieUpdatedEventHandler = movieUpdatedEventHandler;
+
         this._consumer = consumer;
+        this._queryDispatcher = queryDispatcher;
     }
 
     public async Consume(): Promise<void> {
@@ -53,31 +32,52 @@ export default class MessageConsumer {
                 "movie",
                 "direct",
                 "movie.created",
-                this._movieCreatedEventHandler.HandleAsync);
+                async (content: MovieCreated) => {
+                    const { Id, Status, Name, Slot, Price, Localization } = content;
+                    const event = new MovieCreated(Id, Name, Status, Slot, Price, Localization);
+                    await this._queryDispatcher.ExecuteAsync(event);
+                }
+            );
 
             await this._consumer.Subscribe<MovieRemoved>(
                 "movie",
                 "direct",
                 "movie.removed",
-                this._movieRemovedEventHandler.HandleAsync);
+                async (content: MovieRemoved) => {
+                    const { Id } = content;
+                    const event = new MovieRemoved(Id);
+                    await this._queryDispatcher.ExecuteAsync(event);
+                });
 
             await this._consumer.Subscribe<MovieUpdated>(
                 "movie",
                 "direct",
                 "movie.updated",
-                this._movieUpdatedEventHandler.HandleAsync);
+                async (content: MovieUpdated) => {
+                    const { Id, Status, Name, Slot, Price, Localization } = content;
+                    const event = new MovieUpdated(Id, Name, Status, Slot, Price, Localization);
+                    await this._queryDispatcher.ExecuteAsync(event);
+                });
 
             await this._consumer.Subscribe<ActorAdded>(
                 "movie",
                 "direct",
                 "movie.actor.added",
-                this._actorAddedEventHandler.HandleAsync);
+                async (content: ActorAdded) => {
+                    const { Id, ActorId, Name, Role } = content;
+                    const event = new ActorAdded(Id, ActorId, Name, Role);
+                    await this._queryDispatcher.ExecuteAsync(event);
+                });
 
             await this._consumer.Subscribe<ActorRemoved>(
                 "movie",
                 "direct",
                 "movie.actor.removed",
-                this._actorRemovedEventHandler.HandleAsync);
+                async (content: ActorRemoved) => {
+                    const { Id, ActorId } = content;
+                    const event = new ActorRemoved(Id, ActorId);
+                    await this._queryDispatcher.ExecuteAsync(event);
+                });
 
         } catch (err) {
             console.log(`error when trying to handle event ${err}`);

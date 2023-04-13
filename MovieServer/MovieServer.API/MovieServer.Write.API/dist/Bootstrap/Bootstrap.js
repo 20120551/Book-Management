@@ -21,6 +21,8 @@ async function Bootstrap(container, ...modules) {
         container.bind(IoC_1.TYPES.AmqpClient).toConstantValue(amqpClient);
         // reload module
         container.load(...modules);
+        // inject container
+        container.bind(IoC_1.TYPES.InversifyContainer).toConstantValue(container);
         //config express server
         const server = new inversify_express_utils_1.InversifyExpressServer(container);
         server.setConfig((app) => {

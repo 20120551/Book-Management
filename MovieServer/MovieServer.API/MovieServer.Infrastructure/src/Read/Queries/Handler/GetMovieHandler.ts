@@ -12,7 +12,7 @@ export interface IMovieModel extends mongoose.Document, MovieReadDto { };
 
 @Injectable
 export default class GetMovieHandler
-    implements IQueryHandler<GetMovie, MovieReadDto> {
+    implements IGetMovieHandler {
 
     private readonly _model: Model<IMovieModel>;
     constructor(

@@ -12,8 +12,7 @@ import { MovieRemoved } from "@Application/Queries/Events";
 export type IRemoveMovieHandler = ICommandHandler<RemoveMovie>;
 
 @Injectable
-export default class RemoveMovieHandler implements ICommandHandler<RemoveMovie>
-{
+export default class RemoveMovieHandler implements IRemoveMovieHandler {
     private readonly _movieRepo: IMovieRepo;
     private readonly _mapper: AutoMapper;
     private readonly _publisher: IPublisher;

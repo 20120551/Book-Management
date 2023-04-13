@@ -9,23 +9,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Exceptions_1 = require("@Shared/Exceptions");
 const IoC_1 = require("@Shared/IoC");
 let ErrorHandlingMiddleware = class ErrorHandlingMiddleware {
-    InvokeAsync(req, res, next) {
-        console.log('go here');
-        try {
-            next();
+    InvokeAsync(err, req, res, next) {
+        console.error(`
+            ----------------------------------
+            EXCEPTION MIDDLEWARE
+            HTTP ${req.method} ${req.url}
+            ${err.message}
+            ${err.stack}
+            ----------------------------------
+            `);
+        if (err instanceof Exceptions_1.MovieException) {
+            res.status(400).json({ message: err.message });
         }
-        catch (err) {
-            console.log(err);
-            if (err instanceof Exceptions_1.MovieException) {
-                res.status(400).json({ message: err.message });
-            }
-            else {
-                res.status(500).json({ message: "Internal server error" });
-            }
+        else {
+            res.status(500).json({ message: "Internal server error" });
         }
-        finally {
-            return Promise.resolve();
-        }
+        return Promise.resolve();
     }
 };
 ErrorHandlingMiddleware = __decorate([

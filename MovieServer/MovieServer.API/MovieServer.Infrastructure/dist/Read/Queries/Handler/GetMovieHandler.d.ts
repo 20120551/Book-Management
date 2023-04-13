@@ -6,7 +6,7 @@ import { DbClient } from "@Infrastructure/Read/Queries";
 export declare type IGetMovieHandler = IQueryHandler<GetMovie, MovieReadDto>;
 export interface IMovieModel extends mongoose.Document, MovieReadDto {
 }
-export default class GetMovieHandler implements IQueryHandler<GetMovie, MovieReadDto> {
+export default class GetMovieHandler implements IGetMovieHandler {
     private readonly _model;
     constructor(dbClient: DbClient);
     HandleAsync(query: GetMovie): Promise<MovieReadDto | null>;

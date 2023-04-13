@@ -5,7 +5,7 @@ import { IMovieFactory } from "@Domain/Factories";
 import { AutoMapper } from "@Shared/AutoMapper";
 import { IPublisher } from "@Shared/Broker";
 export declare type IRemoveActorFromMovieHandler = ICommandHandler<RemoveActorFromMovie>;
-export default class RemoveActorFromMovieHandler implements ICommandHandler<RemoveActorFromMovie> {
+export default class RemoveActorFromMovieHandler implements IRemoveActorFromMovieHandler {
     private readonly _movieRepo;
     private readonly _movieFactory;
     private readonly _actorRepo;

@@ -12,29 +12,42 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const Events_1 = require("@Application/Queries/Events");
 const IoC_1 = require("@Shared/IoC");
 let MessageConsumer = class MessageConsumer {
-    _actorAddedEventHandler;
-    _actorRemovedEventHandler;
-    _movieCreatedEventHandler;
-    _movieRemovedEventHandler;
-    _movieUpdatedEventHandler;
+    _queryDispatcher;
     _consumer;
-    constructor(consumer, actorAddedEventHandler, actorRemovedEventHandler, movieCreatedEventHandler, movieUpdatedEventHandler, movieRemovedEventHandler) {
-        this._actorAddedEventHandler = actorAddedEventHandler;
-        this._actorRemovedEventHandler = actorRemovedEventHandler;
-        this._movieCreatedEventHandler = movieCreatedEventHandler;
-        this._movieRemovedEventHandler = movieRemovedEventHandler;
-        this._movieUpdatedEventHandler = movieUpdatedEventHandler;
+    constructor(queryDispatcher, consumer) {
         this._consumer = consumer;
+        this._queryDispatcher = queryDispatcher;
     }
     async Consume() {
         try {
-            await this._consumer.Subscribe("movie", "direct", "movie.created", this._movieCreatedEventHandler.HandleAsync);
-            await this._consumer.Subscribe("movie", "direct", "movie.removed", this._movieRemovedEventHandler.HandleAsync);
-            await this._consumer.Subscribe("movie", "direct", "movie.updated", this._movieUpdatedEventHandler.HandleAsync);
-            await this._consumer.Subscribe("movie", "direct", "movie.actor.added", this._actorAddedEventHandler.HandleAsync);
-            await this._consumer.Subscribe("movie", "direct", "movie.actor.removed", this._actorRemovedEventHandler.HandleAsync);
+            await this._consumer.Subscribe("movie", "direct", "movie.created", async (content) => {
+                const { Id, Status, Name, Slot, Price, Localization } = content;
+                const event = new Events_1.MovieCreated(Id, Name, Status, Slot, Price, Localization);
+                await this._queryDispatcher.ExecuteAsync(event);
+            });
+            await this._consumer.Subscribe("movie", "direct", "movie.removed", async (content) => {
+                const { Id } = content;
+                const event = new Events_1.MovieRemoved(Id);
+                await this._queryDispatcher.ExecuteAsync(event);
+            });
+            await this._consumer.Subscribe("movie", "direct", "movie.updated", async (content) => {
+                const { Id, Status, Name, Slot, Price, Localization } = content;
+                const event = new Events_1.MovieUpdated(Id, Name, Status, Slot, Price, Localization);
+                await this._queryDispatcher.ExecuteAsync(event);
+            });
+            await this._consumer.Subscribe("movie", "direct", "movie.actor.added", async (content) => {
+                const { Id, ActorId, Name, Role } = content;
+                const event = new Events_1.ActorAdded(Id, ActorId, Name, Role);
+                await this._queryDispatcher.ExecuteAsync(event);
+            });
+            await this._consumer.Subscribe("movie", "direct", "movie.actor.removed", async (content) => {
+                const { Id, ActorId } = content;
+                const event = new Events_1.ActorRemoved(Id, ActorId);
+                await this._queryDispatcher.ExecuteAsync(event);
+            });
         }
         catch (err) {
             console.log(`error when trying to handle event ${err}`);
@@ -43,12 +56,8 @@ let MessageConsumer = class MessageConsumer {
 };
 MessageConsumer = __decorate([
     IoC_1.Injectable,
-    __param(0, IoC_1.Consumer),
-    __param(1, IoC_1.ActorAddedEventHandler),
-    __param(2, IoC_1.ActorRemovedEventHandler),
-    __param(3, IoC_1.MovieCreatedEventHandler),
-    __param(4, IoC_1.MovieUpdatedEventHandler),
-    __param(5, IoC_1.MovieRemovedEventHandler),
-    __metadata("design:paramtypes", [Object, Object, Object, Object, Object, Object])
+    __param(0, IoC_1.QueryDispatcher),
+    __param(1, IoC_1.Consumer),
+    __metadata("design:paramtypes", [Object, Object])
 ], MessageConsumer);
 exports.default = MessageConsumer;

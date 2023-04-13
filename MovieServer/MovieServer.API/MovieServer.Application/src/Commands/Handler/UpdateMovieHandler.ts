@@ -11,8 +11,7 @@ import { MovieUpdated } from "@Application/Queries/Events";
 export type IUpdateMovieHandler = ICommandHandler<UpdateMovie>;
 
 @Injectable
-export default class UpdateMovieHandler implements ICommandHandler<UpdateMovie>
-{
+export default class UpdateMovieHandler implements IUpdateMovieHandler {
     private readonly _movieRepo: IMovieRepo;
     private readonly _mapper: AutoMapper;
     private readonly _publisher: IPublisher;

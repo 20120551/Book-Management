@@ -15,8 +15,7 @@ import { ActorRemoved } from "@Application/Queries/Events";
 export type IRemoveActorFromMovieHandler = ICommandHandler<RemoveActorFromMovie>;
 
 @Injectable
-export default class RemoveActorFromMovieHandler implements ICommandHandler<RemoveActorFromMovie>
-{
+export default class RemoveActorFromMovieHandler implements IRemoveActorFromMovieHandler {
     private readonly _movieRepo: IMovieRepo;
     private readonly _movieFactory: IMovieFactory;
     private readonly _actorRepo: IActorRepo;

@@ -21,42 +21,38 @@ const inversify_express_utils_1 = require("@Shared/Lib/inversify-express-utils")
 const express_1 = __importDefault(require("express"));
 // @Injectable
 let MovieController = class MovieController {
-    constructor(createMovieHandler, updateMovieHandler, removeMovieHandler, removeActorFromMovieHandler, addActorToMovieHandler) {
-        this._createMovieHandler = createMovieHandler;
-        this._updateMovieHandler = updateMovieHandler;
-        this._removeActorFromMovieHandler = removeActorFromMovieHandler;
-        this._removeMovieHandler = removeMovieHandler;
-        this._addActorToMovieHandler = addActorToMovieHandler;
+    constructor(commandDispatcher) {
+        this._commandDispatcher = commandDispatcher;
     }
     //router
     async Create(req, res) {
         const { Name, Status, Slot, Price, Localization } = req.body;
         const command = new Commands_1.CreateMovie(Name, Status, Slot, Price, Localization);
-        const movie = await this._createMovieHandler.HandleAsync(command);
+        const movie = await this._commandDispatcher.DispatchAsync(command);
         return res.status(201).json(movie);
     }
-    async Update(req, res, next) {
+    async Update(req, res) {
         const { Name, Status, Slot, Price, Localization } = req.body;
         const command = new Commands_1.UpdateMovie(req.params.id, Name, Status, Slot, Price, Localization);
-        await this._updateMovieHandler.HandleAsync(command);
+        await this._commandDispatcher.DispatchAsync(command);
         return res.status(204).json({ message: "update command success" });
     }
     async Delete(req, res) {
         // set command id
         const command = new Commands_1.RemoveMovie(req.params.id);
-        await this._removeMovieHandler.HandleAsync(command);
+        await this._commandDispatcher.DispatchAsync(command);
         return res.status(204).json({ message: "remove command success" });
     }
     async AddActor(req, res) {
         const { Name, Role } = req.body;
         const command = new Commands_1.AddActorToMovie(req.params.id, Name, Role);
-        const movie = await this._addActorToMovieHandler.HandleAsync(command);
+        const movie = await this._commandDispatcher.DispatchAsync(command);
         return res.status(200).json(movie);
     }
     async RemoveActor(req, res) {
         const { id, actorId } = req.params;
         const command = new Commands_1.RemoveActorFromMovie(id, actorId);
-        const movie = await this._removeActorFromMovieHandler.HandleAsync(command);
+        const movie = await this._commandDispatcher.DispatchAsync(command);
         return res.status(200).json(movie);
     }
 };
@@ -72,9 +68,8 @@ __decorate([
     (0, inversify_express_utils_1.httpPut)("/:id"),
     __param(0, (0, inversify_express_utils_1.request)()),
     __param(1, (0, inversify_express_utils_1.response)()),
-    __param(2, (0, inversify_express_utils_1.next)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object, Function]),
+    __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
 ], MovieController.prototype, "Update", null);
 __decorate([
@@ -103,11 +98,7 @@ __decorate([
 ], MovieController.prototype, "RemoveActor", null);
 MovieController = __decorate([
     (0, inversify_express_utils_1.controller)("/api/movie"),
-    __param(0, IoC_1.CreateMovieHandler),
-    __param(1, IoC_1.UpdateMovieHandler),
-    __param(2, IoC_1.RemoveMovieHandler),
-    __param(3, IoC_1.RemoveActorFromMovieHandler),
-    __param(4, IoC_1.AddActorToMovieHandler),
-    __metadata("design:paramtypes", [Object, Object, Object, Object, Object])
+    __param(0, IoC_1.CommandDispatcher),
+    __metadata("design:paramtypes", [Object])
 ], MovieController);
 exports.default = MovieController;

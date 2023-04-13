@@ -19,7 +19,10 @@ let ActorRepo = class ActorRepo {
     }
     async Get(id) {
         const actor = await this._actorModel.findByPk(id);
-        return actor?.dataValues;
+        if (!actor) {
+            return null;
+        }
+        return actor.dataValues;
     }
     async Create(actor, movie) {
         const _actor = await this._actorModel.create({ ...actor, MovieId: movie.Id.Guid });

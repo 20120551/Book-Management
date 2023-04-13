@@ -17,6 +17,8 @@ const AutoMapper_1 = require("@Shared/AutoMapper");
 const core_1 = require("@Shared/Lib/@automapper/core");
 const Profiles_1 = require("@Application/Profiles");
 const Middleware_1 = require("@Write/Api/Middleware");
+// dispatcher
+const Commands_1 = require("@Shared/Dispatcher/Commands");
 exports.referenceDataIoCModule = new inversify_1.ContainerModule((bind) => {
     // add automapper
     (0, core_1.addProfile)(AutoMapper_1.mapper, Profiles_1.MovieProfile.CreateMap);
@@ -24,9 +26,9 @@ exports.referenceDataIoCModule = new inversify_1.ContainerModule((bind) => {
         .toConstantValue(AutoMapper_1.mapper);
     // add middleware
     bind(IoC_1.TYPES.Middleware)
-        .to(Middleware_1.ErrorHandlingMiddleware).inSingletonScope().whenTargetNamed("ErrorHandlingMiddleware");
+        .to(Middleware_1.ErrorHandlingMiddleware).inSingletonScope();
     bind(IoC_1.TYPES.Middleware)
-        .to(Middleware_1.RequestLoggingMiddleware).inSingletonScope().whenTargetNamed("RequestLoggingMiddleware");
+        .to(Middleware_1.RequestLoggingMiddleware).inSingletonScope();
     // binding message broker
     bind(IoC_1.TYPES.Publisher)
         .to(Broker_1.Publisher).inSingletonScope();
@@ -48,6 +50,9 @@ exports.referenceDataIoCModule = new inversify_1.ContainerModule((bind) => {
         .to(Handler_1.RemoveMovieHandler).inSingletonScope();
     bind(IoC_1.TYPES.UpdateMovieHandler)
         .to(Handler_1.UpdateMovieHandler).inSingletonScope();
+    //binding dispatcher
+    bind(IoC_1.TYPES.CommandDispatcher)
+        .to(Commands_1.CommandDispatcher).inSingletonScope();
     // add factory
     bind(IoC_1.TYPES.MovieFactory)
         .to(Factories_1.MovieFactory).inSingletonScope();

@@ -23,6 +23,8 @@ export async function Bootstrap(
         // reload module
         container.load(...modules);
 
+        // inject container
+        container.bind<Container>(TYPES.InversifyContainer).toConstantValue(container);
         //config express server
         const server = new InversifyExpressServer(container);
 

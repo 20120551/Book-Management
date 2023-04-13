@@ -36,6 +36,9 @@ import { IConsumer, IPublisher } from "@Shared/Broker";
 import { IErrorMiddleware, IMiddleware } from "@Shared/Middleware";
 import { ErrorHandlingMiddleware, RequestLoggingMiddleware } from "@Write/Api/Middleware";
 
+// dispatcher
+import { ICommandDispatcher, CommandDispatcher } from "@Shared/Dispatcher/Commands";
+
 export const referenceDataIoCModule = new ContainerModule((bind) => {
     // add automapper
     addProfile(mapper, MovieProfile.CreateMap);
@@ -44,9 +47,9 @@ export const referenceDataIoCModule = new ContainerModule((bind) => {
 
     // add middleware
     bind<IErrorMiddleware>(TYPES.Middleware)
-        .to(ErrorHandlingMiddleware).inSingletonScope().whenTargetNamed("ErrorHandlingMiddleware");
+        .to(ErrorHandlingMiddleware).inSingletonScope();
     bind<IMiddleware>(TYPES.Middleware)
-        .to(RequestLoggingMiddleware).inSingletonScope().whenTargetNamed("RequestLoggingMiddleware");
+        .to(RequestLoggingMiddleware).inSingletonScope();
 
     // binding message broker
     bind<IPublisher>(TYPES.Publisher)
@@ -75,6 +78,10 @@ export const referenceDataIoCModule = new ContainerModule((bind) => {
 
     bind<IUpdateMovieHandler>(TYPES.UpdateMovieHandler)
         .to(UpdateMovieHandler).inSingletonScope();
+
+    //binding dispatcher
+    bind<ICommandDispatcher>(TYPES.CommandDispatcher)
+        .to(CommandDispatcher).inSingletonScope();
 
     // add factory
     bind<IMovieFactory>(TYPES.MovieFactory)

@@ -8,6 +8,6 @@ import { referenceDataIoCModule } from "./inversify.config";
 
 
 (async () => {
-    const container = new Container();
+    const container = new Container({ autoBindInjectable: true });
     const app = await Bootstrap(container, referenceDataIoCModule);
 })();

@@ -1,7 +1,6 @@
 import { IConsumer } from "@Shared/Broker";
 import { AmqpClient, Injectable } from "@Shared/IoC";
 import { AMQPConnection } from "./AmqpClient";
-
 @Injectable
 export default class Consumer implements IConsumer {
     private readonly _amqpClient: AMQPConnection;
@@ -15,7 +14,7 @@ export default class Consumer implements IConsumer {
         exchange: string,
         type: string,
         bindingKey: string,
-        handler: (data: THandler) => Promise<void | null>): Promise<void> {
+        handler: (message: THandler) => Promise<void>): Promise<void> {
         // create channel
         const channel = await this._amqpClient.createChannel();
         // assert exchange
@@ -31,7 +30,8 @@ export default class Consumer implements IConsumer {
             }
             const content = msg.content.toString();
             const jsonContent = JSON.parse(content);
-            await handler(jsonContent);
+            // Object.setPrototypeOf(jsonContent, THandler.prototype)
+            handler(jsonContent);
 
         }, { noAck: true });
     }

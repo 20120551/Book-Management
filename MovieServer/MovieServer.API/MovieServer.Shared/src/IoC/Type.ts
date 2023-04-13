@@ -10,23 +10,23 @@ export const TYPES =
     /// add handler of command and query
 
     //handler
-    AddActorToMovieHandler: Symbol("AddActorToMovieHandler"),
-    CreateMovieHandler: Symbol("CreateMovieHandler"),
-    RemoveActorFromMovieHandler: Symbol("RemoveActorFromMovieHandler"),
-    RemoveMovieHandler: Symbol("RemoveMovieHandler"),
-    UpdateMovieHandler: Symbol("UpdateMovieHandler"),
+    AddActorToMovieHandler: Symbol("ICommandHandler<AddActorToMovie>"),
+    CreateMovieHandler: Symbol("ICommandHandler<CreateMovie>"),
+    RemoveActorFromMovieHandler: Symbol("ICommandHandler<RemoveActorFromMovie>"),
+    RemoveMovieHandler: Symbol("ICommandHandler<RemoveMovie>"),
+    UpdateMovieHandler: Symbol("ICommandHandler<UpdateMovie>"),
 
     //query
-    GetMovieHandler: Symbol("GetMovieHandler"),
-    GetMoviesHandler: Symbol("GetMoviesHandler"),
-    SearchMovieHandler: Symbol("SearchMovieHandler"),
+    GetMovieHandler: Symbol("IQueryHandler<GetMovie>"),
+    GetMoviesHandler: Symbol("IQueryHandler<GetMovies>"),
+    SearchMovieHandler: Symbol("IQueryHandler<SearchMovie>"),
 
     //event handler
-    ActorAddedEventHandler: Symbol("ActorAddedEventHandler"),
-    ActorRemovedEventHandler: Symbol("ActorRemovedEventHandler"),
-    MovieCreatedEventHandler: Symbol("MovieCreatedEventHandler"),
-    MovieUpdatedEventHandler: Symbol("MovieUpdatedEventHandler"),
-    MovieRemovedEventHandler: Symbol("MovieRemovedEventHandler"),
+    ActorAddedEventHandler: Symbol("IQueryHandler<ActorAdded>"),
+    ActorRemovedEventHandler: Symbol("IQueryHandler<ActorRemoved>"),
+    MovieCreatedEventHandler: Symbol("IQueryHandler<MovieCreated>"),
+    MovieUpdatedEventHandler: Symbol("IQueryHandler<MovieUpdated>"),
+    MovieRemovedEventHandler: Symbol("IQueryHandler<MovieRemoved>"),
 
 
     Mapper: Symbol("Mapper"),
@@ -34,5 +34,9 @@ export const TYPES =
     Publisher: Symbol("Publisher"),
     Consumer: Symbol("Consumer"),
 
-    Middleware: Symbol("Middleware")
+    Middleware: Symbol("Middleware"),
+    InversifyContainer: Symbol("InversifyContainer"),
+
+    CommandDispatcher: Symbol("CommandDispatcher"),
+    QueryDispatcher: Symbol("QueryDispatcher")
 }

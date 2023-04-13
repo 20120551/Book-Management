@@ -11,8 +11,7 @@ import { MovieCreated } from "@Application/Queries/Events";
 export type ICreateMovieHandler = ICommandHandler<CreateMovie>;
 
 @Injectable
-export default class CreateMovieHandler implements ICommandHandler<CreateMovie>
-{
+export default class CreateMovieHandler implements ICreateMovieHandler {
     private readonly _movieRepo: IMovieRepo;
     private readonly _mapper: AutoMapper;
     private readonly _publisher: IPublisher;

@@ -11,6 +11,6 @@ const Bootstrap_1 = require("@Write/Api/Bootstrap");
 const inversify_1 = require("@Shared/Lib/inversify");
 const inversify_config_1 = require("./inversify.config");
 (async () => {
-    const container = new inversify_1.Container();
+    const container = new inversify_1.Container({ autoBindInjectable: true });
     const app = await (0, Bootstrap_1.Bootstrap)(container, inversify_config_1.referenceDataIoCModule);
 })();

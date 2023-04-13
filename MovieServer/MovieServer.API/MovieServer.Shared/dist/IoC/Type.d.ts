@@ -23,4 +23,7 @@ export declare const TYPES: {
     Publisher: symbol;
     Consumer: symbol;
     Middleware: symbol;
+    InversifyContainer: symbol;
+    CommandDispatcher: symbol;
+    QueryDispatcher: symbol;
 };
