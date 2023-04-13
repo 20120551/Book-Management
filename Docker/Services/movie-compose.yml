@@ -1,0 +1,15 @@
+version: "3"
+services:
+  movie_api:
+    container_name: "movie_api"
+    build:
+      context: ./../../MovieServer/MovieServer.API/
+      dockerfile: Dockerfile
+    networks:
+      - moviemanagementnet
+    # ports:
+    #   - "5001:5001"
+    #   - "5002:5002"
+networks:
+  moviemanagementnet:
+    external: true

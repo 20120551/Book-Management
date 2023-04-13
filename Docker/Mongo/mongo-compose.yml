@@ -9,7 +9,6 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: pa55w0rd!
     ports:
       - "27017:27017"
-      - "27018:27017"
     volumes:
       - mongodb:/data/db
     networks:

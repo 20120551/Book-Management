@@ -1,0 +1,307 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Write.API\\OrderServer.Write.API.csproj": {}
+  },
+  "projects": {
+    "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Application\\OrderServer.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Application\\OrderServer.Application.csproj",
+        "projectName": "OrderServer.Application",
+        "projectPath": "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Application\\OrderServer.Application.csproj",
+        "packagesPath": "C:\\Users\\MODERN 15\\.nuget\\packages\\",
+        "outputPath": "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\MODERN 15\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Domain\\OrderServer.Domain.csproj": {
+                "projectPath": "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Domain\\OrderServer.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Domain\\OrderServer.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Domain\\OrderServer.Domain.csproj",
+        "projectName": "OrderServer.Domain",
+        "projectPath": "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Domain\\OrderServer.Domain.csproj",
+        "packagesPath": "C:\\Users\\MODERN 15\\.nuget\\packages\\",
+        "outputPath": "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\MODERN 15\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Shared\\OrderServer.Shared.csproj": {
+                "projectPath": "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Shared\\OrderServer.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Infrastructure\\OrderServer.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Infrastructure\\OrderServer.Infrastructure.csproj",
+        "projectName": "OrderServer.Infrastructure",
+        "projectPath": "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Infrastructure\\OrderServer.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\MODERN 15\\.nuget\\packages\\",
+        "outputPath": "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\MODERN 15\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Application\\OrderServer.Application.csproj": {
+                "projectPath": "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Application\\OrderServer.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Shared\\OrderServer.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Shared\\OrderServer.Shared.csproj",
+        "projectName": "OrderServer.Shared",
+        "projectPath": "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Shared\\OrderServer.Shared.csproj",
+        "packagesPath": "C:\\Users\\MODERN 15\\.nuget\\packages\\",
+        "outputPath": "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\MODERN 15\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Write.API\\OrderServer.Write.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Write.API\\OrderServer.Write.API.csproj",
+        "projectName": "OrderServer.Write.API",
+        "projectPath": "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Write.API\\OrderServer.Write.API.csproj",
+        "packagesPath": "C:\\Users\\MODERN 15\\.nuget\\packages\\",
+        "outputPath": "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Write.API\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\MODERN 15\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Infrastructure\\OrderServer.Infrastructure.csproj": {
+                "projectPath": "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Infrastructure\\OrderServer.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

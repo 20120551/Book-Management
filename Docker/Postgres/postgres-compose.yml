@@ -1,0 +1,21 @@
+version: "3"
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: "sa"
+      POSTGRES_PASSWORD: "pa55w0rd!"
+      PGDATA: "/data/postgres"
+    volumes:
+      - data:/data/postgres
+    networks:
+      - moviemanagementnet
+    ports:
+      - "5432:5432"
+
+volumes:
+  data: {}
+networks:
+  moviemanagementnet:
+    external: true
