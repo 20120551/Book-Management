@@ -1,6 +1,7 @@
 import { ICommandDispatcher } from "@Shared/Dispatcher/Commands";
+import { interfaces } from "@Shared/Lib/inversify-express-utils";
 import express from "express";
-export default class MovieController {
+export default class MovieController implements interfaces.Controller {
     private readonly _commandDispatcher;
     constructor(commandDispatcher: ICommandDispatcher);
     Create(req: express.Request, res: express.Response): Promise<express.Response<any, Record<string, any>>>;

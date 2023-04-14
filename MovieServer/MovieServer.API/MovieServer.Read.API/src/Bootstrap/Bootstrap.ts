@@ -1,11 +1,13 @@
 import { Container, ContainerModule } from "@Shared/Lib/inversify";
 import { InversifyExpressServer } from "@Shared/Lib/inversify-express-utils";
 import { DbClient, GetDatabaseClient } from "@Infrastructure/Read/Queries";
-import { dbConfig, env } from "@Read/Api/Configs";
+import { dbConfig, env, redisConfig } from "@Read/Api/Configs";
 import { AMQPConnection, GetAmqpClient } from "@Infrastructure/Broker";
 import { TYPES } from "@Shared/IoC";
 import express from "express";
 import { ErrorHandlingMiddleware, RequestLoggingMiddleware } from "@Read/Api/Middleware";
+import { CacheClient, GetCacheConnection } from "@Infrastructure/Shared/Repositories";
+import cookieParser from "cookie-parser";
 
 export async function Bootstrap(
     container: Container,
@@ -20,6 +22,9 @@ export async function Bootstrap(
         const amqpClient = await GetAmqpClient(env.AMQP_URL!);
         container.bind<AMQPConnection>(TYPES.AmqpClient).toConstantValue(amqpClient);
 
+        // get cache client
+        const cacheClient = await GetCacheConnection(redisConfig);
+        container.bind<CacheClient>(TYPES.CacheDbClient).toConstantValue(cacheClient);
         // reload module
         container.load(...modules);
 
@@ -32,6 +37,7 @@ export async function Bootstrap(
             // pipeline
             app.use(express.json());
             // middleware
+            app.use(cookieParser());
             //resolve middleware
             app.use(container.resolve(RequestLoggingMiddleware).InvokeAsync);
         });

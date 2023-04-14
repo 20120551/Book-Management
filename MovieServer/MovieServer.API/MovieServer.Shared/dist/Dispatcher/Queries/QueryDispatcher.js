@@ -21,7 +21,7 @@ let QueryDispatcher = class QueryDispatcher {
         this.ExecuteAsync = this.ExecuteAsync.bind(this);
     }
     ExecuteAsync(query) {
-        console.log(`IQueryHandler<${query.constructor.name}>`);
+        console.log(`Dispatcher: IQueryHandler<${query.constructor.name}>`);
         const symbol = (0, Utils_1.GetSymbol)(`IQueryHandler<${query.constructor.name}>`);
         const handler = this._container.get(symbol);
         return handler.HandleAsync(query);

@@ -5,6 +5,7 @@ import { MovieReadDto } from "@Application/DTO";
 import { ReadDbClient, Injectable } from "@Shared/IoC";
 import { DbClient } from "@Infrastructure/Read/Queries";
 import { MovieSchema } from "@Infrastructure/Read/Models/Schema";
+import { NotFoundMovieException } from "@Infrastructure/Read/Queries/Exceptions";
 
 // movieModel
 export type IGetMovieHandler = IQueryHandler<GetMovie, MovieReadDto>;
@@ -24,6 +25,9 @@ export default class GetMovieHandler
     async HandleAsync(query: GetMovie): Promise<MovieReadDto | null> {
         var result = await this._model.findOne({ Id: query.Id });
         // automapper map result
+        if (result === null) {
+            throw new NotFoundMovieException();
+        }
         return result;
     }
 }

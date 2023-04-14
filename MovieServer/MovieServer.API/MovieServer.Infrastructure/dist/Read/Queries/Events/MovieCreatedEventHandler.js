@@ -23,8 +23,6 @@ let MovieCreatedEventHandler = class MovieCreatedEventHandler {
     }
     async HandleAsync(query) {
         console.log("event handled on MovieCreatedEventHandler");
-        console.log(query);
-        console.log(query.constructor.name);
         await this._model.create({ ...query });
     }
 };

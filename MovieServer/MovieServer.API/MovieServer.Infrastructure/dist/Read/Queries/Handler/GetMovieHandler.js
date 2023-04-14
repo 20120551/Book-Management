@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const IoC_1 = require("@Shared/IoC");
 const Schema_1 = require("@Infrastructure/Read/Models/Schema");
+const Exceptions_1 = require("@Infrastructure/Read/Queries/Exceptions");
 ;
 let GetMovieHandler = class GetMovieHandler {
     constructor(dbClient) {
@@ -22,6 +23,9 @@ let GetMovieHandler = class GetMovieHandler {
     async HandleAsync(query) {
         var result = await this._model.findOne({ Id: query.Id });
         // automapper map result
+        if (result === null) {
+            throw new Exceptions_1.NotFoundMovieException();
+        }
         return result;
     }
 };

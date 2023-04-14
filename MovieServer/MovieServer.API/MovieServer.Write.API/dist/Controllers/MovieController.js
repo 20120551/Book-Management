@@ -19,6 +19,10 @@ const Commands_1 = require("@Application/Commands");
 const IoC_1 = require("@Shared/IoC");
 const inversify_express_utils_1 = require("@Shared/Lib/inversify-express-utils");
 const express_1 = __importDefault(require("express"));
+const Middleware_1 = require("@Write/Api/Middleware");
+const MiddlewareFactory_1 = __importDefault(require("../Middleware/MiddlewareFactory"));
+//resolve middleware
+const movieStatusMiddleware = MiddlewareFactory_1.default.Create(Middleware_1.MovieStatusMiddleware);
 // @Injectable
 let MovieController = class MovieController {
     constructor(commandDispatcher) {
@@ -28,32 +32,41 @@ let MovieController = class MovieController {
     async Create(req, res) {
         const { Name, Status, Slot, Price, Localization } = req.body;
         const command = new Commands_1.CreateMovie(Name, Status, Slot, Price, Localization);
-        const movie = await this._commandDispatcher.DispatchAsync(command);
-        return res.status(201).json(movie);
+        await this._commandDispatcher.DispatchAsync(command);
+        return res.status(201).json({
+            message: 'create movie successfully',
+            redirect_link: `http://localhost:5001/api/movie/${command.Id}`
+        });
     }
     async Update(req, res) {
         const { Name, Status, Slot, Price, Localization } = req.body;
-        const command = new Commands_1.UpdateMovie(req.params.id, Name, Status, Slot, Price, Localization);
+        const command = new Commands_1.UpdateMovie(req.params.movieId, Name, Status, Slot, Price, Localization);
         await this._commandDispatcher.DispatchAsync(command);
-        return res.status(204).json({ message: "update command success" });
+        return res.status(204).json();
     }
     async Delete(req, res) {
         // set command id
-        const command = new Commands_1.RemoveMovie(req.params.id);
+        const command = new Commands_1.RemoveMovie(req.params.movieId);
         await this._commandDispatcher.DispatchAsync(command);
-        return res.status(204).json({ message: "remove command success" });
+        return res.status(204).json();
     }
     async AddActor(req, res) {
         const { Name, Role } = req.body;
-        const command = new Commands_1.AddActorToMovie(req.params.id, Name, Role);
-        const movie = await this._commandDispatcher.DispatchAsync(command);
-        return res.status(200).json(movie);
+        const command = new Commands_1.AddActorToMovie(req.params.movieId, Name, Role);
+        await this._commandDispatcher.DispatchAsync(command);
+        return res.status(200).json({
+            message: 'add success',
+            redirect_link: `http://localhost:5001/api/movie/${command.Id}`
+        });
     }
     async RemoveActor(req, res) {
-        const { id, actorId } = req.params;
-        const command = new Commands_1.RemoveActorFromMovie(id, actorId);
-        const movie = await this._commandDispatcher.DispatchAsync(command);
-        return res.status(200).json(movie);
+        const { movieId, actorId } = req.params;
+        const command = new Commands_1.RemoveActorFromMovie(movieId, actorId);
+        await this._commandDispatcher.DispatchAsync(command);
+        return res.status(200).json({
+            message: "remove success",
+            redirect_link: `http://localhost:5001/api/movie/${command.Id}`
+        });
     }
 };
 __decorate([
@@ -65,7 +78,10 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], MovieController.prototype, "Create", null);
 __decorate([
-    (0, inversify_express_utils_1.httpPut)("/:id"),
+    (0, inversify_express_utils_1.httpPut)("/:movieId", movieStatusMiddleware.CheckValidMovieActionBasedOnStatus([
+        { status: "Trailer" },
+        { status: "Comming soon" }
+    ])),
     __param(0, (0, inversify_express_utils_1.request)()),
     __param(1, (0, inversify_express_utils_1.response)()),
     __metadata("design:type", Function),
@@ -73,7 +89,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], MovieController.prototype, "Update", null);
 __decorate([
-    (0, inversify_express_utils_1.httpDelete)("/:id"),
+    (0, inversify_express_utils_1.httpDelete)("/:movieId"),
     __param(0, (0, inversify_express_utils_1.request)()),
     __param(1, (0, inversify_express_utils_1.response)()),
     __metadata("design:type", Function),
@@ -81,7 +97,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], MovieController.prototype, "Delete", null);
 __decorate([
-    (0, inversify_express_utils_1.httpPut)("/:id/actor"),
+    (0, inversify_express_utils_1.httpPut)("/:movieId/actor"),
     __param(0, (0, inversify_express_utils_1.request)()),
     __param(1, (0, inversify_express_utils_1.response)()),
     __metadata("design:type", Function),
@@ -89,7 +105,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], MovieController.prototype, "AddActor", null);
 __decorate([
-    (0, inversify_express_utils_1.httpDelete)("/:id/actor/:actorId"),
+    (0, inversify_express_utils_1.httpDelete)("/:movieId/actor/:actorId"),
     __param(0, (0, inversify_express_utils_1.request)()),
     __param(1, (0, inversify_express_utils_1.response)()),
     __metadata("design:type", Function),

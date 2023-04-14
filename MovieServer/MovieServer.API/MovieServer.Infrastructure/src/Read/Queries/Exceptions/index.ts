@@ -1,0 +1,1 @@
+export { default as NotFoundMovieException } from './NotFoundMovieException';

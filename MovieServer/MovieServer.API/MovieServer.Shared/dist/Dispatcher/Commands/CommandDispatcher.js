@@ -22,7 +22,7 @@ let CommandDispatcher = class CommandDispatcher {
     }
     DispatchAsync(command) {
         // get command handler based on TCommand
-        console.log(`ICommandHandler<${command.constructor.name}>`);
+        console.log(`Commander: ICommandHandler<${command.constructor.name}>`);
         const symbol = (0, Utils_1.GetSymbol)(`ICommandHandler<${command.constructor.name}>`);
         const handler = this._container.get(symbol);
         // handle command

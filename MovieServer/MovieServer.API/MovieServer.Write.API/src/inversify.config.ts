@@ -3,8 +3,8 @@ import { ContainerModule } from "@Shared/Lib/inversify";
 //import type
 import { TYPES } from "@Shared/IoC";
 //import repository
-import { IMovieFactory, MovieFactory } from "@Domain/Factories";
-import { IActorRepo, IMovieRepo } from "@Domain/Repositories";
+import { ICartFactory, IMovieFactory, MovieFactory, CartFactory } from "@Domain/Factories";
+import { IActorRepo, IMovieRepo, ICartRepo } from "@Domain/Repositories";
 import { MovieRepo, ActorRepo } from "@Infrastructure/Write/Repositories";
 
 //import broker
@@ -17,19 +17,26 @@ import {
     IRemoveMovieHandler,
     IRemoveActorFromMovieHandler,
     IAddActorToMovieHandler,
-
     CreateMovieHandler,
     UpdateMovieHandler,
     RemoveMovieHandler,
     RemoveActorFromMovieHandler,
-    AddActorToMovieHandler
-} from "@Application/Commands/Handler";
+    AddActorToMovieHandler,
+    ICreateCartHandler,
+    CreateCartHandler,
+    IRemoveCartHandler,
+    RemoveCartHandler,
+    IAddMovieToCartHandler,
+    AddMovieToCartHandler,
+    UpdateMovieFromCartHandler,
+    IUpdateMovieFromCartHandler,
+    IRemoveMovieFromCartHandler,
+    RemoveMovieFromCartHandler
+} from "@Application/Commands/Handlers";
 
-//
-import "@Write/Api/Controllers";
 import { AutoMapper, mapper } from "@Shared/AutoMapper";
 import { addProfile } from "@Shared/Lib/@automapper/core";
-import { MovieProfile } from "@Application/Profiles";
+import { CartProfile, MovieProfile } from "@Application/Profiles";
 import { IConsumer, IPublisher } from "@Shared/Broker";
 
 // middleware
@@ -39,9 +46,16 @@ import { ErrorHandlingMiddleware, RequestLoggingMiddleware } from "@Write/Api/Mi
 // dispatcher
 import { ICommandDispatcher, CommandDispatcher } from "@Shared/Dispatcher/Commands";
 
+// cache service
+import { ICacheService, CacheService } from "@Infrastructure/Shared/Services";
+import { CartRepo } from "@Infrastructure/Shared/Repositories";
+
+import "@Write/Api/Controllers";
+
 export const referenceDataIoCModule = new ContainerModule((bind) => {
     // add automapper
     addProfile(mapper, MovieProfile.CreateMap);
+    addProfile(mapper, CartProfile.CreateMap);
     bind<AutoMapper>(TYPES.Mapper)
         .toConstantValue(mapper);
 
@@ -62,6 +76,8 @@ export const referenceDataIoCModule = new ContainerModule((bind) => {
         .to(ActorRepo).inSingletonScope();
     bind<IMovieRepo>(TYPES.MovieRepo)
         .to(MovieRepo).inSingletonScope();
+    bind<ICartRepo>(TYPES.CartRepo)
+        .to(CartRepo).inSingletonScope();
 
     // add command handler
     bind<ICreateMovieHandler>(TYPES.CreateMovieHandler)
@@ -79,6 +95,22 @@ export const referenceDataIoCModule = new ContainerModule((bind) => {
     bind<IUpdateMovieHandler>(TYPES.UpdateMovieHandler)
         .to(UpdateMovieHandler).inSingletonScope();
 
+
+    bind<ICreateCartHandler>(TYPES.CreateCartHandler)
+        .to(CreateCartHandler).inSingletonScope();
+
+    bind<IRemoveCartHandler>(TYPES.RemoveCartHandler)
+        .to(RemoveCartHandler).inSingletonScope();
+
+    bind<IAddMovieToCartHandler>(TYPES.AddMovieToCartHandler)
+        .to(AddMovieToCartHandler).inSingletonScope();
+
+    bind<IUpdateMovieFromCartHandler>(TYPES.UpdateMovieFromCartHandler)
+        .to(UpdateMovieFromCartHandler).inSingletonScope();
+
+    bind<IRemoveMovieFromCartHandler>(TYPES.RemoveMovieFromCartHandler)
+        .to(RemoveMovieFromCartHandler).inSingletonScope();
+
     //binding dispatcher
     bind<ICommandDispatcher>(TYPES.CommandDispatcher)
         .to(CommandDispatcher).inSingletonScope();
@@ -86,5 +118,12 @@ export const referenceDataIoCModule = new ContainerModule((bind) => {
     // add factory
     bind<IMovieFactory>(TYPES.MovieFactory)
         .to(MovieFactory).inSingletonScope();
+
+    bind<ICartFactory>(TYPES.CartFactory)
+        .to(CartFactory).inSingletonScope();
+
+    // add cache service
+    bind<ICacheService>(TYPES.CacheService)
+        .to(CacheService).inSingletonScope();
 })
 

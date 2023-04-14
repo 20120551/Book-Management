@@ -1,0 +1,1 @@
+{"version":3,"file":"Seat.d.ts","sourceRoot":"","sources":["../../src/ValueObjects/Seat.ts"],"names":[],"mappings":"AAEA,MAAM,CAAC,OAAO,OAAO,IAAI;IACd,KAAK,EAAE,MAAM,CAAC;gBAET,IAAI,EAAE,MAAM;IAOjB,MAAM,CAAC,IAAI,EAAE,MAAM;WAQZ,MAAM,CAAC,IAAI,EAAE,MAAM,GAAG,IAAI;CAC3C"}

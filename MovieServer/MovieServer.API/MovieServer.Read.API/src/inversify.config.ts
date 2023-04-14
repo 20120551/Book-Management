@@ -17,6 +17,9 @@ import {
     SearchMovieHandler,
 } from "@Infrastructure/Read/Queries/Handler";
 
+
+import { GetCartHandler, IGetCartHandler } from "@Application/Queries/Handlers";
+
 import {
     IMovieCreatedEventHandler,
     IMovieRemovedEventHandler,
@@ -40,9 +43,21 @@ import { IErrorMiddleware, IMiddleware } from "@Shared/Middleware";
 import { ErrorHandlingMiddleware, RequestLoggingMiddleware } from "@Read/Api/Middleware";
 
 import { IQueryDispatcher, QueryDispatcher } from "@Shared/Dispatcher/Queries";
+import { CartRepo } from "@Infrastructure/Shared/Repositories";
+import { CacheService, ICacheService } from "@Infrastructure/Shared/Services";
+import { ICartRepo } from "@Domain/Repositories";
+import { AutoMapper, mapper } from "@Shared/AutoMapper";
+import { CartProfile } from "@Application/Profiles";
+import { addProfile } from "@Shared/Lib/@automapper/core";
+
 export const referenceDataIoCModule = new ContainerModule((bind) => {
     // add controller
     // RegisterController(bind, MovieController);
+    // add mapper
+    addProfile(mapper, CartProfile.CreateMap);
+    bind<AutoMapper>(TYPES.Mapper)
+        .toConstantValue(mapper);
+
     // add consumer
     bind<IConsumer>(TYPES.Consumer)
         .to(Consumer).inSingletonScope();
@@ -63,6 +78,16 @@ export const referenceDataIoCModule = new ContainerModule((bind) => {
         .to(ActorAddedEventHandler).inSingletonScope();
     bind<IActorRemovedEventHandler>(TYPES.ActorRemovedEventHandler)
         .to(ActorRemovedEventHandler).inSingletonScope();
+
+
+    bind<IGetCartHandler>(TYPES.GetCartHandler)
+        .to(GetCartHandler).inSingletonScope();
+
+    // add repo
+    bind<ICartRepo>(TYPES.CartRepo)
+        .to(CartRepo).inSingletonScope();
+    bind<ICacheService>(TYPES.CacheService)
+        .to(CacheService).inSingletonScope();
 
     // inject background job
 

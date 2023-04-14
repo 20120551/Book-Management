@@ -3,7 +3,6 @@ import { CreateMovie, RemoveMovie, UpdateMovie } from "@Application/Commands";
 import { Movie } from "@Domain/Entities";
 import { MovieId, MovieSlot, Localization, MoviePrice, MovieName, MovieStatus } from "@Domain/ValueObjects";
 import { AutoMapper } from "@Shared/AutoMapper";
-import { MovieReadDto } from "@Application/DTO";
 
 
 export default class MovieProfile {
@@ -60,40 +59,10 @@ export default class MovieProfile {
                 mapFrom(src => MovieStatus.Create(src.Status))
             ));
 
-        createMap(mapper, RemoveMovie, Movie,
-            forMember(
-                dest => dest.Id,
-                mapFrom(src => MovieId.Create(src.Id))
-            ));
-
-        createMap(mapper, Movie, MovieReadDto,
-            forMember(
-                dest => dest.Id,
-                mapFrom(src => src.Id.Guid)
-            ),
-            forMember(
-                dest => dest.Name,
-                mapFrom(src => src.Name.Name)
-            ),
-            forMember(
-                dest => dest.Status,
-                mapFrom(src => src.Status.Status)
-            ),
-            forMember(
-                dest => dest.Slot,
-                mapFrom(src => src.Slot.Slot)
-            ),
-            forMember(
-                dest => dest.Price,
-                mapFrom(src => src.Price.Price)
-            ),
-            forMember(
-                dest => dest.Localization,
-                mapFrom(src => src.Localization)
-            ),
-            forMember(
-                dest => dest.Actors,
-                mapFrom(src => src.Actors)
-            ));
+        // createMap(mapper, RemoveMovie, Movie,
+        //     forMember(
+        //         dest => dest.Id,
+        //         mapFrom(src => MovieId.Create(src.Id))
+        //     ));
     }
 }

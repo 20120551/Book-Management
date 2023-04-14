@@ -5,6 +5,8 @@ export const TYPES =
     ActorRepo: Symbol("ActorRepo"),
     MovieFactory: Symbol("MovieFactory"),
     ReadDbClient: Symbol("ReadDbClient"),
+    CartFactory: Symbol("CartFactory"),
+    CartRepo: Symbol("CartRepo"),
     WriteDbClient: Symbol("WriteDbClient"),
 
     /// add handler of command and query
@@ -15,11 +17,17 @@ export const TYPES =
     RemoveActorFromMovieHandler: Symbol("ICommandHandler<RemoveActorFromMovie>"),
     RemoveMovieHandler: Symbol("ICommandHandler<RemoveMovie>"),
     UpdateMovieHandler: Symbol("ICommandHandler<UpdateMovie>"),
+    AddMovieToCartHandler: Symbol("ICommandHandler<AddMovieToCart>"),
+    CreateCartHandler: Symbol("ICommandHandler<CreateCart>"),
+    RemoveCartHandler: Symbol("ICommandHandler<RemoveCart>"),
+    RemoveMovieFromCartHandler: Symbol("ICommandHandler<RemoveMovieFromCart>"),
+    UpdateMovieFromCartHandler: Symbol("ICommandHandler<UpdateMovieFromCart>"),
 
     //query
     GetMovieHandler: Symbol("IQueryHandler<GetMovie>"),
     GetMoviesHandler: Symbol("IQueryHandler<GetMovies>"),
     SearchMovieHandler: Symbol("IQueryHandler<SearchMovie>"),
+    GetCartHandler: Symbol("IQueryHandler<GetCart>"),
 
     //event handler
     ActorAddedEventHandler: Symbol("IQueryHandler<ActorAdded>"),
@@ -38,5 +46,9 @@ export const TYPES =
     InversifyContainer: Symbol("InversifyContainer"),
 
     CommandDispatcher: Symbol("CommandDispatcher"),
-    QueryDispatcher: Symbol("QueryDispatcher")
+    QueryDispatcher: Symbol("QueryDispatcher"),
+
+    // cache service
+    CacheService: Symbol("CacheService"),
+    CacheDbClient: Symbol("CacheDbClient"),
 }
