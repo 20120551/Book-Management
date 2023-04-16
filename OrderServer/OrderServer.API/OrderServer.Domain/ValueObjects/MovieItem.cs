@@ -9,12 +9,5 @@ using System.Threading.Tasks;
 
 namespace OrderServer.Domain.ValueObjects
 {
-    public class MovieItem
-    {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public float Price { get; set; }
-        public string Seat { get; set; }
-        public int Quantity { get; set; }
-    }
+    public record MovieItem(string Id, string Name, float Price, string Seat, int Quantity);
 }

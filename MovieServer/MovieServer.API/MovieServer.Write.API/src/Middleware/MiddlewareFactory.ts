@@ -1,7 +1,6 @@
 import { IMiddlewareFactory } from "@Shared/Middleware";
 import { Container } from "@Shared/Lib/inversify";
 import { container } from "../Bootstrap";
-console.log(container);
 
 
 class MiddlewareFactory implements IMiddlewareFactory {
