@@ -41,5 +41,11 @@ namespace OrderServer.Domain.Entities
                 AddOrder(order);
             }
         }
+        // update changed
+        public void ChangeProperty(string firstName, string lastName)
+        {
+            _firstName = firstName;
+            _lastName = lastName;
+        }
     }
 }

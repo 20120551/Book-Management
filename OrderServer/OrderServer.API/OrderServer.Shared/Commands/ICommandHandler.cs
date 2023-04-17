@@ -8,6 +8,6 @@ namespace OrderServer.Shared.Commands
 {
     public interface ICommandHandler<TCommand> where TCommand : ICommand
     {
-        Task HandleAsync(TCommand result);
+        Task HandleAsync(TCommand command);
     }
 }

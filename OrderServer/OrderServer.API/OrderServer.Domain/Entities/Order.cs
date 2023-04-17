@@ -49,6 +49,9 @@ namespace OrderServer.Domain.Entities
             // default state
             _state = StateEnum.Default.ToString();
             _event = EventEnum.Default.ToString();
+
+            // caclculate total price
+            _calculateTotalPrice();
         }
 
         //method
@@ -104,7 +107,7 @@ namespace OrderServer.Domain.Entities
         /// <summary>
         /// CalculateTotalPrice
         /// </summary>
-        public void CalculateTotalPrice()
+        private void _calculateTotalPrice()
         {
             foreach (var movie in _movies)
             {

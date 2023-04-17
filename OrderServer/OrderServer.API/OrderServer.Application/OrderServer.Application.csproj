@@ -10,4 +10,8 @@
     <ProjectReference Include="..\OrderServer.Domain\OrderServer.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Events\Payments\" />
+  </ItemGroup>
+
 </Project>

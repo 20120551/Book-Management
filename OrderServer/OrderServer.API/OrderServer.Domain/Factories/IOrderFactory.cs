@@ -11,6 +11,6 @@ namespace OrderServer.Domain.Factories
     public interface IOrderFactory
     {
         Order Create(OrderId id, Receiver receiver, User user);
-        Order Create(OrderId id, Receiver receiver, User user, List<MovieItem> movies);
+        Order Create(OrderId id, Receiver receiver, User user, ICollection<MovieItem> movies);
     }
 }

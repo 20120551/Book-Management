@@ -12,7 +12,7 @@ namespace OrderServer.Domain.Factories
     {
         public Order Create(OrderId id, Receiver receiver, User user) => new Order(id, receiver, user);
 
-        public Order Create(OrderId id, Receiver receiver, User user, List<MovieItem> movies)
+        public Order Create(OrderId id, Receiver receiver, User user, ICollection<MovieItem> movies)
         {
             var order = new Order(id, receiver, user);
             order.AddMovies(movies);

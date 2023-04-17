@@ -10,7 +10,7 @@ namespace OrderServer.Domain.Repositories
 {
     public interface IOrderRepo
     {
-        Task<Order> GetAsync(OrderId id);
+        Task<Order?> GetAsync(OrderId id);
         Task CreateAsync(Order order);
         Task UpdateAsync(Order order);
         Task DeleteAsync(Order order);

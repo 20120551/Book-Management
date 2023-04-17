@@ -10,9 +10,9 @@ namespace OrderServer.Domain.Repositories
 {
     public interface IUserRepo
     {
-        Task<User> GetAsync(UserId id);
+        Task<User?> GetAsync(UserId id);
         Task CreateAsync(User user);
         Task UpdateAsync(User user);
-        Task DeleteAsync(UserId id);
+        Task DeleteAsync(User user);
     }
 }

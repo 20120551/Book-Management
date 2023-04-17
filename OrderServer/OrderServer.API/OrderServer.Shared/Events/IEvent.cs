@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderServer.Shared.Dispatcher
+namespace OrderServer.Shared.Events
 {
-    public static class Extension
+    public interface IEvent
     {
-
     }
 }
