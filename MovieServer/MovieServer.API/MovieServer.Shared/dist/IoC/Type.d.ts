@@ -17,6 +17,8 @@ export declare const TYPES: {
     RemoveCartHandler: symbol;
     RemoveMovieFromCartHandler: symbol;
     UpdateMovieFromCartHandler: symbol;
+    AddReceiverToCartHandler: symbol;
+    UpdateReceiverFromCartHandler: symbol;
     GetMovieHandler: symbol;
     GetMoviesHandler: symbol;
     SearchMovieHandler: symbol;

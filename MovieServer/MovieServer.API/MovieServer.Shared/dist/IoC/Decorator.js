@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CacheService = exports.CacheDbClient = exports.QueryDispatcher = exports.CommandDispatcher = exports.InversifyContainer = exports.Consumer = exports.Publisher = exports.AmqpClient = exports.Mapper = exports.MovieRemovedEventHandler = exports.MovieUpdatedEventHandler = exports.MovieCreatedEventHandler = exports.ActorRemovedEventHandler = exports.ActorAddedEventHandler = exports.GetCartHandler = exports.SearchMovieHandler = exports.GetMoviesHandler = exports.GetMovieHandler = exports.AddMovieToCartHandler = exports.UpdateMovieFromCartHandler = exports.RemoveMovieFromCartHandler = exports.RemoveCartHandler = exports.CreateCartHandler = exports.UpdateMovieHandler = exports.RemoveMovieHandler = exports.RemoveActorFromMovieHandler = exports.CreateMovieHandler = exports.AddActorToMovieHandler = exports.CartFactory = exports.CartRepo = exports.MovieFactory = exports.ActorRepo = exports.MovieRepo = exports.WriteDbClient = exports.ReadDbClient = void 0;
+exports.CacheService = exports.CacheDbClient = exports.QueryDispatcher = exports.CommandDispatcher = exports.InversifyContainer = exports.Consumer = exports.Publisher = exports.AmqpClient = exports.Mapper = exports.MovieRemovedEventHandler = exports.MovieUpdatedEventHandler = exports.MovieCreatedEventHandler = exports.ActorRemovedEventHandler = exports.ActorAddedEventHandler = exports.GetCartHandler = exports.SearchMovieHandler = exports.GetMoviesHandler = exports.GetMovieHandler = exports.UpdateReceiverFromCartHandler = exports.AddReceiverToCartHandler = exports.AddMovieToCartHandler = exports.UpdateMovieFromCartHandler = exports.RemoveMovieFromCartHandler = exports.RemoveCartHandler = exports.CreateCartHandler = exports.UpdateMovieHandler = exports.RemoveMovieHandler = exports.RemoveActorFromMovieHandler = exports.CreateMovieHandler = exports.AddActorToMovieHandler = exports.CartFactory = exports.CartRepo = exports.MovieFactory = exports.ActorRepo = exports.MovieRepo = exports.WriteDbClient = exports.ReadDbClient = void 0;
 const inversify_1 = require("inversify");
 const Type_1 = require("./Type");
 exports.ReadDbClient = (0, inversify_1.inject)(Type_1.TYPES.ReadDbClient);
@@ -20,6 +20,8 @@ exports.RemoveCartHandler = (0, inversify_1.inject)(Type_1.TYPES.RemoveCartHandl
 exports.RemoveMovieFromCartHandler = (0, inversify_1.inject)(Type_1.TYPES.RemoveMovieFromCartHandler);
 exports.UpdateMovieFromCartHandler = (0, inversify_1.inject)(Type_1.TYPES.UpdateMovieFromCartHandler);
 exports.AddMovieToCartHandler = (0, inversify_1.inject)(Type_1.TYPES.AddMovieToCartHandler);
+exports.AddReceiverToCartHandler = (0, inversify_1.inject)(Type_1.TYPES.AddReceiverToCartHandler);
+exports.UpdateReceiverFromCartHandler = (0, inversify_1.inject)(Type_1.TYPES.UpdateReceiverFromCartHandler);
 exports.GetMovieHandler = (0, inversify_1.inject)(Type_1.TYPES.GetMovieHandler);
 exports.GetMoviesHandler = (0, inversify_1.inject)(Type_1.TYPES.GetMoviesHandler);
 exports.SearchMovieHandler = (0, inversify_1.inject)(Type_1.TYPES.SearchMovieHandler);

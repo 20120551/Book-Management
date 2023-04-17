@@ -22,6 +22,8 @@ exports.TYPES = {
     RemoveCartHandler: Symbol("ICommandHandler<RemoveCart>"),
     RemoveMovieFromCartHandler: Symbol("ICommandHandler<RemoveMovieFromCart>"),
     UpdateMovieFromCartHandler: Symbol("ICommandHandler<UpdateMovieFromCart>"),
+    AddReceiverToCartHandler: Symbol("ICommandHandler<AddReceiverToCart>"),
+    UpdateReceiverFromCartHandler: Symbol("ICommandHandler<UpdateReceiverFromCart>"),
     //query
     GetMovieHandler: Symbol("IQueryHandler<GetMovie>"),
     GetMoviesHandler: Symbol("IQueryHandler<GetMovies>"),

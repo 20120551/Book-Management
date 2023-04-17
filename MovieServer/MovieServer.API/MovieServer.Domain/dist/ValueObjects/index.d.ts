@@ -9,4 +9,5 @@ export { default as Quantity } from './Quantity';
 export { default as CartId } from './CartId';
 export { default as Seat } from './Seat';
 export { default as MovieItem } from './MovieItem';
+export { default as Receiver } from './Receiver';
 //# sourceMappingURL=index.d.ts.map

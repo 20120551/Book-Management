@@ -1,13 +1,18 @@
 import { NotFoundMovieItemException } from "@Domain/Exceptions";
-import { CartId, MovieId, Quantity, Seat } from "@Domain/ValueObjects";
+import { CartId, MovieId, Quantity, Receiver, Seat } from "@Domain/ValueObjects";
 import { Aggregation } from "@Shared/Domain";
 import MovieItem from "../ValueObjects/MovieItem";
 
 export default class Cart extends Aggregation {
     public static TIME_TO_LEAVE = 24 * 60 * 60;
+    // recevier
+    // add receiver
+    // update receiver
     public MovieItems: MovieItem[] = [];
+    public Receiver: Receiver | undefined;
 
-    constructor(public Id: CartId) {
+    constructor(
+        public Id: CartId) {
         super();
     }
 
@@ -29,7 +34,9 @@ export default class Cart extends Aggregation {
             this.MovieItems.push(movieItem);
             return;
         }
-        return item.IncreaseQuantity(movieItem.Quantity);
+        // increase quantity
+        movieItem.IncreaseQuantity(item.Quantity);
+        item.Quantity = movieItem.Quantity;
     }
 
     public Adds(movieItems: MovieItem[]): void {
@@ -73,5 +80,9 @@ export default class Cart extends Aggregation {
             throw new NotFoundMovieItemException(id);
         }
         item.ChangeSeat(seat);
+    }
+    // change receiver
+    public ChangeReceiver(receiver: Receiver) {
+        this.Receiver = receiver;
     }
 }

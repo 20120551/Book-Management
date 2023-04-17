@@ -4,8 +4,9 @@ class CartReadDto {
     /**
      *
      */
-    constructor(Id, MovieItems) {
+    constructor(Id, Receiver, MovieItems) {
         this.Id = Id;
+        this.Receiver = Receiver;
         this.MovieItems = MovieItems;
     }
 }

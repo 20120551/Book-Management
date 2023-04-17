@@ -26,6 +26,10 @@ export default class CartProfile {
                 mapFrom(src => src.Id.Guid)
             ),
             forMember(
+                dest => dest.Receiver,
+                mapFrom(src => src.Receiver)
+            ),
+            forMember(
                 dest => dest.MovieItems,
                 mapFrom(src => src.MovieItems.map(item => {
                     const { Name, Price, Id, Seat, Quantity } = item;
@@ -43,6 +47,10 @@ export default class CartProfile {
             forMember(
                 dest => dest.Id,
                 mapFrom(src => CartId.Create(src.Id))
+            ),
+            forMember(
+                dest => dest.Receiver,
+                mapFrom(src => src.Receiver)
             ),
             forMember(
                 dest => dest.MovieItems,

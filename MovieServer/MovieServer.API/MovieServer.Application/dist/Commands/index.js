@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateMovieFromCart = exports.RemoveMovieFromCart = exports.AddMovieToCart = exports.RemoveCart = exports.CreateCart = exports.RemoveActorFromMovie = exports.AddActorToMovie = exports.RemoveMovie = exports.UpdateMovie = exports.CreateMovie = void 0;
+exports.UpdateReceiverFromCart = exports.AddReceiverToCart = exports.UpdateMovieFromCart = exports.RemoveMovieFromCart = exports.AddMovieToCart = exports.RemoveCart = exports.CreateCart = exports.RemoveActorFromMovie = exports.AddActorToMovie = exports.RemoveMovie = exports.UpdateMovie = exports.CreateMovie = void 0;
 var CreateMovie_1 = require("./CreateMovie");
 Object.defineProperty(exports, "CreateMovie", { enumerable: true, get: function () { return __importDefault(CreateMovie_1).default; } });
 var UpdateMovie_1 = require("./UpdateMovie");
@@ -24,3 +24,7 @@ var RemoveMovieFromCart_1 = require("./RemoveMovieFromCart");
 Object.defineProperty(exports, "RemoveMovieFromCart", { enumerable: true, get: function () { return __importDefault(RemoveMovieFromCart_1).default; } });
 var UpdateMovieFromCart_1 = require("./UpdateMovieFromCart");
 Object.defineProperty(exports, "UpdateMovieFromCart", { enumerable: true, get: function () { return __importDefault(UpdateMovieFromCart_1).default; } });
+var AddReceiverToCart_1 = require("./AddReceiverToCart");
+Object.defineProperty(exports, "AddReceiverToCart", { enumerable: true, get: function () { return __importDefault(AddReceiverToCart_1).default; } });
+var UpdateReceiverFromCart_1 = require("./UpdateReceiverFromCart");
+Object.defineProperty(exports, "UpdateReceiverFromCart", { enumerable: true, get: function () { return __importDefault(UpdateReceiverFromCart_1).default; } });

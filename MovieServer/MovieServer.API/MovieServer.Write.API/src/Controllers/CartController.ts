@@ -1,4 +1,4 @@
-import { AddMovieToCart, CreateCart, RemoveCart, RemoveMovieFromCart, UpdateMovieFromCart } from "@Application/Commands";
+import { AddMovieToCart, AddReceiverToCart, CreateCart, RemoveCart, RemoveMovieFromCart, UpdateMovieFromCart, UpdateReceiverFromCart } from "@Application/Commands";
 import { ICommandDispatcher } from "@Shared/Dispatcher/Commands";
 import {
     CommandDispatcher
@@ -54,6 +54,34 @@ export default class CartController implements interfaces.Controller {
         await this._commandDispatcher.DispatchAsync(command);
         res.clearCookie("cart_id");
         return res.status(204).json();
+    }
+
+
+
+    @httpPost("/receiver")
+    public async AddReceiver(@request() req: express.Request, @response() res: express.Response) {
+        const { cart_id: cartId = "" } = req.cookies;
+        const { FullName, PhoneNumber, Address } = req.body;
+        const command = new AddReceiverToCart(cartId, FullName, PhoneNumber, Address);
+
+        await this._commandDispatcher.DispatchAsync(command);
+        return res.status(200).json({
+            message: "add success",
+            redirect_link: "http://localhost:5001/api/cart"
+        })
+    }
+
+    @httpPut("/receiver")
+    public async UpdateReceiver(@request() req: express.Request, @response() res: express.Response) {
+        const { cart_id: cartId = "" } = req.cookies;
+        const { FullName, PhoneNumber, Address } = req.body;
+        const command = new UpdateReceiverFromCart(cartId, FullName, PhoneNumber, Address);
+
+        await this._commandDispatcher.DispatchAsync(command);
+        return res.status(200).json({
+            message: "update success",
+            redirect_link: "http://localhost:5001/api/cart"
+        })
     }
 
     // middleware for checking movie status is acceptable

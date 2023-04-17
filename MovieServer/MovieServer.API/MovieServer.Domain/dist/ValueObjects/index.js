@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MovieItem = exports.Seat = exports.CartId = exports.Quantity = exports.MovieStatus = exports.MovieSlot = exports.Actor = exports.MoviePrice = exports.Localization = exports.MovieName = exports.MovieId = void 0;
+exports.Receiver = exports.MovieItem = exports.Seat = exports.CartId = exports.Quantity = exports.MovieStatus = exports.MovieSlot = exports.Actor = exports.MoviePrice = exports.Localization = exports.MovieName = exports.MovieId = void 0;
 var MovieId_1 = require("./MovieId");
 Object.defineProperty(exports, "MovieId", { enumerable: true, get: function () { return __importDefault(MovieId_1).default; } });
 var MovieName_1 = require("./MovieName");
@@ -26,3 +26,5 @@ var Seat_1 = require("./Seat");
 Object.defineProperty(exports, "Seat", { enumerable: true, get: function () { return __importDefault(Seat_1).default; } });
 var MovieItem_1 = require("./MovieItem");
 Object.defineProperty(exports, "MovieItem", { enumerable: true, get: function () { return __importDefault(MovieItem_1).default; } });
+var Receiver_1 = require("./Receiver");
+Object.defineProperty(exports, "Receiver", { enumerable: true, get: function () { return __importDefault(Receiver_1).default; } });

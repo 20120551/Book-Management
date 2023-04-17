@@ -13,11 +13,11 @@ class MovieStatusMiddleware {
             // get movie
             const movie = await movieRepo.Get(ValueObjects_1.MovieId.Create(movieId));
             if (movie === null) {
-                return res.status(400).json("Not found movie");
+                return res.status(400).json({ message: "Not found movie" });
             }
             const accepted = args.find(arg => arg.status === movie.Status.Status);
             if (!accepted) {
-                return res.status(403).json(`can't not execute that operation`);
+                return res.status(403).json({ message: `can't not execute that operation` });
             }
             return next();
         };

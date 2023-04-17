@@ -1,5 +1,10 @@
 export default class CartReadDto {
     Id: string;
+    Receiver: {
+        FullName: string;
+        PhoneNumber: string;
+        Address: string;
+    };
     MovieItems: {
         Id: string;
         Name: string;
@@ -10,7 +15,11 @@ export default class CartReadDto {
     /**
      *
      */
-    constructor(Id: string, MovieItems: {
+    constructor(Id: string, Receiver: {
+        FullName: string;
+        PhoneNumber: string;
+        Address: string;
+    }, MovieItems: {
         Id: string;
         Name: string;
         Price: number;

@@ -20,6 +20,8 @@ export const RemoveCartHandler = inject(TYPES.RemoveCartHandler);
 export const RemoveMovieFromCartHandler = inject(TYPES.RemoveMovieFromCartHandler);
 export const UpdateMovieFromCartHandler = inject(TYPES.UpdateMovieFromCartHandler);
 export const AddMovieToCartHandler = inject(TYPES.AddMovieToCartHandler);
+export const AddReceiverToCartHandler = inject(TYPES.AddReceiverToCartHandler);
+export const UpdateReceiverFromCartHandler = inject(TYPES.UpdateReceiverFromCartHandler);
 
 export const GetMovieHandler = inject(TYPES.GetMovieHandler);
 export const GetMoviesHandler = inject(TYPES.GetMoviesHandler);

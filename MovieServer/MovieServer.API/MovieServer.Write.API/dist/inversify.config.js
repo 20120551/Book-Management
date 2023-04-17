@@ -65,6 +65,10 @@ exports.referenceDataIoCModule = new inversify_1.ContainerModule((bind) => {
         .to(Handlers_1.UpdateMovieFromCartHandler).inSingletonScope();
     bind(IoC_1.TYPES.RemoveMovieFromCartHandler)
         .to(Handlers_1.RemoveMovieFromCartHandler).inSingletonScope();
+    bind(IoC_1.TYPES.AddReceiverToCartHandler)
+        .to(Handlers_1.AddReceiverToCartHandler).inSingletonScope();
+    bind(IoC_1.TYPES.UpdateReceiverFromCartHandler)
+        .to(Handlers_1.UpdateReceiverFromCartHandler).inSingletonScope();
     //binding dispatcher
     bind(IoC_1.TYPES.CommandDispatcher)
         .to(Commands_1.CommandDispatcher).inSingletonScope();

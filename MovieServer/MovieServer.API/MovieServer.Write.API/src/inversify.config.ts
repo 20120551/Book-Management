@@ -26,12 +26,16 @@ import {
     CreateCartHandler,
     IRemoveCartHandler,
     RemoveCartHandler,
+    AddReceiverToCartHandler,
+    UpdateReceiverFromCartHandler,
     IAddMovieToCartHandler,
+    IUpdateReceiverFromCartHandler,
     AddMovieToCartHandler,
     UpdateMovieFromCartHandler,
     IUpdateMovieFromCartHandler,
     IRemoveMovieFromCartHandler,
-    RemoveMovieFromCartHandler
+    RemoveMovieFromCartHandler,
+    IAddReceiverToCartHandler
 } from "@Application/Commands/Handlers";
 
 import { AutoMapper, mapper } from "@Shared/AutoMapper";
@@ -110,6 +114,12 @@ export const referenceDataIoCModule = new ContainerModule((bind) => {
 
     bind<IRemoveMovieFromCartHandler>(TYPES.RemoveMovieFromCartHandler)
         .to(RemoveMovieFromCartHandler).inSingletonScope();
+
+    bind<IAddReceiverToCartHandler>(TYPES.AddReceiverToCartHandler)
+        .to(AddReceiverToCartHandler).inSingletonScope();
+
+    bind<IUpdateReceiverFromCartHandler>(TYPES.UpdateReceiverFromCartHandler)
+        .to(UpdateReceiverFromCartHandler).inSingletonScope();
 
     //binding dispatcher
     bind<ICommandDispatcher>(TYPES.CommandDispatcher)

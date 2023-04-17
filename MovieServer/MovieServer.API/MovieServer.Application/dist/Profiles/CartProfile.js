@@ -13,7 +13,7 @@ class CartProfile {
         //         dest => dest.Id,
         //         mapFrom(src => CartId.Create(src.Id))
         //     ))
-        (0, core_1.createMap)(mapper, Entities_1.Cart, DTO_1.CartReadDto, (0, core_1.forMember)(dest => dest.Id, (0, core_1.mapFrom)(src => src.Id.Guid)), (0, core_1.forMember)(dest => dest.MovieItems, (0, core_1.mapFrom)(src => src.MovieItems.map(item => {
+        (0, core_1.createMap)(mapper, Entities_1.Cart, DTO_1.CartReadDto, (0, core_1.forMember)(dest => dest.Id, (0, core_1.mapFrom)(src => src.Id.Guid)), (0, core_1.forMember)(dest => dest.Receiver, (0, core_1.mapFrom)(src => src.Receiver)), (0, core_1.forMember)(dest => dest.MovieItems, (0, core_1.mapFrom)(src => src.MovieItems.map(item => {
             const { Name, Price, Id, Seat, Quantity } = item;
             return {
                 Name: Name.Name,
@@ -23,7 +23,7 @@ class CartProfile {
                 Quantity: Quantity.Value
             };
         }))));
-        (0, core_1.createMap)(mapper, DTO_1.CartReadDto, Entities_1.Cart, (0, core_1.forMember)(dest => dest.Id, (0, core_1.mapFrom)(src => ValueObjects_1.CartId.Create(src.Id))), (0, core_1.forMember)(dest => dest.MovieItems, (0, core_1.mapFrom)(src => src.MovieItems.map(item => {
+        (0, core_1.createMap)(mapper, DTO_1.CartReadDto, Entities_1.Cart, (0, core_1.forMember)(dest => dest.Id, (0, core_1.mapFrom)(src => ValueObjects_1.CartId.Create(src.Id))), (0, core_1.forMember)(dest => dest.Receiver, (0, core_1.mapFrom)(src => src.Receiver)), (0, core_1.forMember)(dest => dest.MovieItems, (0, core_1.mapFrom)(src => src.MovieItems.map(item => {
             const { Name, Price, Id, Seat: seat, Quantity: quantity } = item;
             return {
                 Name: ValueObjects_1.MovieName.Create(Name),

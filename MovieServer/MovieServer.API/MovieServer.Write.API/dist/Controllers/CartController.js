@@ -50,6 +50,26 @@ let CartController = class CartController {
         res.clearCookie("cart_id");
         return res.status(204).json();
     }
+    async AddReceiver(req, res) {
+        const { cart_id: cartId = "" } = req.cookies;
+        const { FullName, PhoneNumber, Address } = req.body;
+        const command = new Commands_1.AddReceiverToCart(cartId, FullName, PhoneNumber, Address);
+        await this._commandDispatcher.DispatchAsync(command);
+        return res.status(200).json({
+            message: "add success",
+            redirect_link: "http://localhost:5001/api/cart"
+        });
+    }
+    async UpdateReceiver(req, res) {
+        const { cart_id: cartId = "" } = req.cookies;
+        const { FullName, PhoneNumber, Address } = req.body;
+        const command = new Commands_1.UpdateReceiverFromCart(cartId, FullName, PhoneNumber, Address);
+        await this._commandDispatcher.DispatchAsync(command);
+        return res.status(200).json({
+            message: "update success",
+            redirect_link: "http://localhost:5001/api/cart"
+        });
+    }
     // middleware for checking movie status is acceptable
     async AddMovie(req, res) {
         let { cart_id: cartId = "" } = req.cookies;
@@ -112,6 +132,22 @@ __decorate([
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
 ], CartController.prototype, "Remove", null);
+__decorate([
+    (0, inversify_express_utils_1.httpPost)("/receiver"),
+    __param(0, (0, inversify_express_utils_1.request)()),
+    __param(1, (0, inversify_express_utils_1.response)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", Promise)
+], CartController.prototype, "AddReceiver", null);
+__decorate([
+    (0, inversify_express_utils_1.httpPut)("/receiver"),
+    __param(0, (0, inversify_express_utils_1.request)()),
+    __param(1, (0, inversify_express_utils_1.response)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", Promise)
+], CartController.prototype, "UpdateReceiver", null);
 __decorate([
     (0, inversify_express_utils_1.httpPost)("/:movieId", movieStatusMiddleware.CheckValidMovieActionBasedOnStatus([
         { status: "Showing" }

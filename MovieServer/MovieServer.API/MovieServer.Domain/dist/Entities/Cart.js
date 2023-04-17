@@ -6,6 +6,9 @@ class Cart extends Domain_1.Aggregation {
     constructor(Id) {
         super();
         this.Id = Id;
+        // recevier
+        // add receiver
+        // update receiver
         this.MovieItems = [];
     }
     // get item
@@ -65,6 +68,10 @@ class Cart extends Domain_1.Aggregation {
             throw new Exceptions_1.NotFoundMovieItemException(id);
         }
         item.ChangeSeat(seat);
+    }
+    // change receiver
+    ChangeReceiver(receiver) {
+        this.Receiver = receiver;
     }
 }
 exports.default = Cart;

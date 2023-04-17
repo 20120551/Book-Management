@@ -8,4 +8,6 @@ export { default as RemoveCart } from './RemoveCart';
 export { default as AddMovieToCart } from './AddMovieToCart';
 export { default as RemoveMovieFromCart } from './RemoveMovieFromCart';
 export { default as UpdateMovieFromCart } from './UpdateMovieFromCart';
+export { default as AddReceiverToCart } from './AddReceiverToCart';
+export { default as UpdateReceiverFromCart } from './UpdateReceiverFromCart';
 //# sourceMappingURL=index.d.ts.map
