@@ -1,7 +1,10 @@
-﻿using OrderServer.Application.Exceptions;
+﻿using OrderServer.Application.Events.Orders;
+using OrderServer.Application.Exceptions;
 using OrderServer.Domain.Factories;
 using OrderServer.Domain.Repositories;
 using OrderServer.Shared.Commands;
+using OrderServer.Shared.Messages;
+using RabbitMQ.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,17 +19,20 @@ namespace OrderServer.Application.Commands.Handlers
         private readonly IOrderRepo _orderRepo;
         private readonly IUserRepo _userRepo;
         private readonly IOrderFactory _orderFactory;
+        private readonly IPublisher _publisher;
 
         public CreateOrderHandler(
             ICartRepo cartRepo, 
             IOrderRepo orderRepo,
             IUserRepo userRepo,
-            IOrderFactory orderFactory)
+            IOrderFactory orderFactory,
+            IPublisher publisher)
         {
             _cartRepo = cartRepo;
             _orderRepo = orderRepo;
             _userRepo = userRepo;
             _orderFactory = orderFactory;
+            _publisher = publisher;
         }
 
         async Task ICommandHandler<CreateOrder>.HandleAsync(CreateOrder command)
@@ -54,8 +60,14 @@ namespace OrderServer.Application.Commands.Handlers
             // create order in database
             await _orderRepo.CreateAsync(order);
 
-            // publish event
+            // add order to user
+            user.AddOrder(order);
+            await _userRepo.UpdateAsync(user);
 
+            // publish event
+            var @event = new OrderCreated(OrderId, cart.MovieItems, cart.Receiver, user);
+            await _publisher.PublishAsync(
+                "order", ExchangeType.Topic, "order.created", @event);
         }
     }
 }

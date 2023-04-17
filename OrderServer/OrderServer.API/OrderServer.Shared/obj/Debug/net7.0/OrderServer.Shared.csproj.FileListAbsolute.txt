@@ -3,3 +3,10 @@ D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.S
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Shared\obj\Debug\net7.0\OrderServer.Shared.AssemblyInfoInputs.cache
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Shared\obj\Debug\net7.0\OrderServer.Shared.AssemblyInfo.cs
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Shared\obj\Debug\net7.0\OrderServer.Shared.csproj.CoreCompileInputs.cache
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Shared\bin\Debug\net7.0\OrderServer.Shared.deps.json
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Shared\bin\Debug\net7.0\OrderServer.Shared.dll
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Shared\bin\Debug\net7.0\OrderServer.Shared.pdb
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Shared\obj\Debug\net7.0\OrderServer.Shared.dll
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Shared\obj\Debug\net7.0\refint\OrderServer.Shared.dll
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Shared\obj\Debug\net7.0\OrderServer.Shared.pdb
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Shared\obj\Debug\net7.0\ref\OrderServer.Shared.dll

@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace OrderServer.Application.Commands
 {
-    public record DeleteOrder(Guid OrderId, Guid UserId) : ICommand;
+    public record DeleteOrder(Guid OrderId) : ICommand;
 }

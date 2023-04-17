@@ -25,17 +25,16 @@ using OrderServer.Shared.Domain;
  */
 namespace OrderServer.Domain.Entities
 {
-    public class Order : Aggregation<Guid>
+    public class Order
     {
         public OrderId Id { get; private set; }
         private string _state { get; set; }
         private float _totalPrice { get; set; }
-        private string _event { get; set; }
         private Receiver _receiver { get; set; }
         private ICollection<MovieItem> _movies { get; set; } = new List<MovieItem>();
         // receiver
-        private User _user { get; set; }
-        //public Guid UserId { get; set; }
+        public User User { get; set; }
+        public UserId UserId { get; set; }
         //payment
         private Guid _paymentId { get; set; }
 
@@ -44,11 +43,13 @@ namespace OrderServer.Domain.Entities
         {
             Id = id;
             _receiver = receiver;
-            _user = user;
+            User = user;
 
             // default state
-            _state = StateEnum.Default.ToString();
-            _event = EventEnum.Default.ToString();
+            _state = StateEnum.Created.ToString();
+
+            // set userId
+            UserId = user.Id;
 
             // caclculate total price
             _calculateTotalPrice();
@@ -83,16 +84,6 @@ namespace OrderServer.Domain.Entities
             {
                 AddMovie(movie);
             }
-        }
-
-        /// <summary>
-        /// ChangeEvent
-        /// </summary>
-        /// <param name="event"></param>
-        public void ChangeEvent(EventEnum @event)
-        {
-            // accepted event
-            _event = @event.ToString();
         }
 
         /// <summary>

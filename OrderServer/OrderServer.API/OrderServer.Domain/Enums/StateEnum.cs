@@ -8,6 +8,10 @@ namespace OrderServer.Domain.Enums
 {
     public enum StateEnum
     {
-        Default
+        Created,
+        Canceled,
+        FullFill,
+        Pending,
+        Failed
     }
 }

@@ -10,4 +10,14 @@
     <ProjectReference Include="..\OrderServer.Application\OrderServer.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Read\Configurations\" />
+    <Folder Include="Write\Options\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Bson" Version="2.19.1" />
+    <PackageReference Include="MongoDB.Driver" Version="2.19.1" />
+  </ItemGroup>
+
 </Project>

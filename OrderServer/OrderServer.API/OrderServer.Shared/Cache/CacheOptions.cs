@@ -2,7 +2,7 @@
 {
     public class CacheOptions
     {
-        public string ConnectionStrings { get; set; } = null!;
-        public bool AbortOnConnectFail { get; set; }
+        public string ConnectionString { get; set; } = null!;
+        public bool AbortOnConnectFail { get; set; } = false;
     }
 }

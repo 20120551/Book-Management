@@ -19,7 +19,7 @@ namespace OrderServer.Shared.Cache
             var options = new CacheOptions();
             section.Bind(options);
             // connect multiplexer
-            var redis = ConnectionMultiplexer.Connect(options.ConnectionStrings);
+            var redis = ConnectionMultiplexer.Connect(options.ConnectionString);
 
             // add service
             services.AddSingleton<IConnectionMultiplexer>(redis);
