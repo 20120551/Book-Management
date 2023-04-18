@@ -37,7 +37,7 @@ namespace OrderServer.Application.Commands.Handlers
             var @event = new OrderDeleted(command.OrderId, StateEnum.Canceled);
 
             await _publisher.PublishAsync(
-                "order", ExchangeType.Topic, "order.deleted", @event);
+                "order", ExchangeType.Topic, "order.canceled", @event);
         }
     }
 }

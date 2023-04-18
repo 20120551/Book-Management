@@ -24,6 +24,7 @@ namespace OrderServer.Write.API
                     continue;
                 }
 
+                // dotnet-ef migrations add Init --context AppDbContext --startup-project ../OrderServer.Write.API -o Write/Migrations
                 await dbContext.Database.MigrateAsync(cancellationToken);
             }
         }

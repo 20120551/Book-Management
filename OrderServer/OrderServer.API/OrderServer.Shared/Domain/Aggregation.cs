@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace OrderServer.Shared.Domain
 {
-    public class Aggregation<T>
+    public class Aggregation
     {
-        public T Guid { get; set; }
+        public Guid Guid { get; set; } = Guid.NewGuid();
         private List<IDomainEvent> _event = new();
         public IEnumerable<IDomainEvent> Events
         {

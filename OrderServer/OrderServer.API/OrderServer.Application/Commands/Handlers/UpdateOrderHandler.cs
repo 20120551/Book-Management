@@ -32,15 +32,18 @@ namespace OrderServer.Application.Commands.Handlers
             {
                 throw new NotFoundOrderException();
             }
-            order.ChangeState(StateEnum.Created);
+
+            // get state
+            var state = Enum.Parse<StateEnum>(command.State);
+            order.ChangeState(state);
             await _orderRepo.UpdateAsync(order);
 
             //publish event
-            var @event = new OrderUpdated(command.OrderId, StateEnum.Created);
+            var @event = new OrderUpdated(command.OrderId, state);
             await _publisher.PublishAsync(
                 "order",
                 ExchangeType.Topic,
-                "order.updated",
+                $"order.{command.State.ToLower()}",
                 @event);
         }
     }

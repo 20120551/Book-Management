@@ -13,6 +13,8 @@ namespace OrderServer.Shared.Dispatcher.Commands
     {
         public static IServiceCollection AddCommands(this IServiceCollection services)
         {
+            // add dispatcher
+            services.AddSingleton<ICommandDispatcher, CommandDispatcher>();
             // get assembly
             var essembly = Assembly.GetCallingAssembly();
             // scan service
@@ -22,8 +24,6 @@ namespace OrderServer.Shared.Dispatcher.Commands
                 .WithScopedLifetime()
             );
 
-            // add dispatcher
-            services.AddSingleton<ICommandDispatcher, CommandDispatcher>();
             return services;
         }
     }

@@ -17,14 +17,17 @@ namespace OrderServer.Infrastructure.Write.Contexts
 
             // set conversion
             builder
-                .Property(x => x.Id);
-            // .HasConversion(id => id.Id, id => new OrderId(id));
+             .Property(x => x.Id)
+             .HasConversion(id => id.Id, id => new OrderId(id));
             builder
                 .Property(typeof(string), "_status")
                 .HasColumnName("Status");
             builder
                 .Property(typeof(float), "_totalPrice")
                 .HasColumnName("TotalPrice");
+            builder
+                .Property(x => x.UserId)
+                .HasConversion(id => id.Id, id => new UserId(id));
 
             // constrain
             builder
@@ -56,8 +59,8 @@ namespace OrderServer.Infrastructure.Write.Contexts
 
             // set conversion
             builder
-                .Property(x => x.Id);
-            // .HasConversion(id => id.Id, id => new UserId(id));
+                .Property(x => x.Id)
+             .HasConversion(id => id.Id, id => new UserId(id));
             builder
                 .Property(x => x.Username);
             builder
