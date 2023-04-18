@@ -9,6 +9,6 @@ namespace OrderServer.Shared.Dispatcher.Queries
 {
     public interface IQueryDispatcher
     {
-        Task<TResult> DispatchAsync<TResult>(IQuery<TResult> query) where TResult : IQuery;
+        Task<TResult> DispatchAsync<TResult>(IQuery<TResult> query) where TResult : class;
     }
 }

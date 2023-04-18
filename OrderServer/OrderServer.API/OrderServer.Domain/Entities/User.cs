@@ -23,6 +23,11 @@ namespace OrderServer.Domain.Entities
         }
 
         // method
+        public Order? GetOrder(OrderId id)
+        {
+            return Orders.FirstOrDefault(o => o.Id == id);
+        }
+
         public void AddOrder(Order order)
         {
             var _order = Orders.FirstOrDefault(o => o.Id == order.Id);

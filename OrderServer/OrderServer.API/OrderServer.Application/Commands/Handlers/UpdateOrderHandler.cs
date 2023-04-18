@@ -43,7 +43,7 @@ namespace OrderServer.Application.Commands.Handlers
             await _publisher.PublishAsync(
                 "order",
                 ExchangeType.Topic,
-                $"order.{command.State.ToLower()}",
+                $"order.updated.{command.State.ToLower()}",
                 @event);
         }
     }

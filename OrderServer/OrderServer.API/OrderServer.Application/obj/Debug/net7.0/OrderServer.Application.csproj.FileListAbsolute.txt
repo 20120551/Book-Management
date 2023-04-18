@@ -1,3 +1,8 @@
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Application\obj\Debug\net7.0\OrderServer.Application.csproj.AssemblyReference.cache
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Application\obj\Debug\net7.0\OrderServer.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Application\obj\Debug\net7.0\OrderServer.Application.AssemblyInfoInputs.cache
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Application\obj\Debug\net7.0\OrderServer.Application.AssemblyInfo.cs
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Application\obj\Debug\net7.0\OrderServer.Application.csproj.CoreCompileInputs.cache
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Application\bin\Debug\net7.0\OrderServer.Application.deps.json
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Application\bin\Debug\net7.0\OrderServer.Application.dll
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Application\bin\Debug\net7.0\OrderServer.Application.pdb
@@ -5,11 +10,6 @@ D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.A
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Application\bin\Debug\net7.0\OrderServer.Shared.dll
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Application\bin\Debug\net7.0\OrderServer.Domain.pdb
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Application\bin\Debug\net7.0\OrderServer.Shared.pdb
-D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Application\obj\Debug\net7.0\OrderServer.Application.csproj.AssemblyReference.cache
-D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Application\obj\Debug\net7.0\OrderServer.Application.GeneratedMSBuildEditorConfig.editorconfig
-D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Application\obj\Debug\net7.0\OrderServer.Application.AssemblyInfoInputs.cache
-D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Application\obj\Debug\net7.0\OrderServer.Application.AssemblyInfo.cs
-D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Application\obj\Debug\net7.0\OrderServer.Application.csproj.CoreCompileInputs.cache
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Application\obj\Debug\net7.0\OrderServer.Application.csproj.CopyComplete
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Application\obj\Debug\net7.0\OrderServer.Application.dll
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Application\obj\Debug\net7.0\refint\OrderServer.Application.dll

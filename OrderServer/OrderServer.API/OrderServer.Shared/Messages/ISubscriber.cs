@@ -2,7 +2,7 @@
 
 namespace OrderServer.Shared.Messages
 {
-    internal interface ISubscriber
+    public interface ISubscriber
     {
         Task ConsumeAsync<TEvent>(
             string exchange, 

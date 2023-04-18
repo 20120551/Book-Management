@@ -1,6 +1,8 @@
 using OrderServer.Application;
 using OrderServer.Infrastructure;
+using OrderServer.Read.API.Auths;
 using OrderServer.Shared;
+using OrderServer.Write.API.Consumers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddShared();
 builder.Services.AddApplicationLayer();
 builder.Services.AddReadInfrastructure();
+builder.Services.AddHostedService<UserConsumer>();
+builder.Services.AddHostedService<OrderConsumer>();
+
+// add authentication
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = "KONG_AUTHENTICATION_SCHEME";
+    options.DefaultChallengeScheme = "KONG_AUTHENTICATION_SCHEME";
+}).AddScheme<KongAuthenticationOptions, KongAuthenticationHandler>("KONG_AUTHENTICATION_SCHEME", options => { });
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -24,7 +35,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseShared();
 
 app.UseAuthorization();

@@ -16,11 +16,17 @@ namespace OrderServer.Shared.Dispatcher.Queries
         {
             _serviceProvider= serviceProvider;
         }
-        public Task<TResult> DispatchAsync<TResult>(IQuery<TResult> query) where TResult : IQuery
+        public Task<TResult> DispatchAsync<TResult>(IQuery<TResult> query) where TResult : class
         {
             using var scope = _serviceProvider.CreateScope();
-            var handler = scope.ServiceProvider.GetService<IQueryHandler<IQuery<TResult>, TResult>>()!;
-            return handler.QueryAsync(query);
+            // make type
+            var handlerType = typeof(IQueryHandler<,>).MakeGenericType(query.GetType(), typeof(TResult));
+            var handler = scope.ServiceProvider.GetService(handlerType);
+
+            // get method
+            var handleAsyncMethod = handlerType.GetMethod(nameof(IQueryHandler<IQuery<TResult>,TResult>.QueryAsync))!;
+
+            return (Task<TResult>)handleAsyncMethod.Invoke(handler, new object[] { query })!;
         }
     }
 }

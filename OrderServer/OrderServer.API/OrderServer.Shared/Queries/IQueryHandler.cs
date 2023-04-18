@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace OrderServer.Shared.Queries
 {
-    public interface IQueryHandler<TQuery, TResult> where TQuery : IQuery<TResult>
+    public interface IQueryHandler<TQuery, TResult> 
+        where TResult: class
+        where TQuery : IQuery<TResult>
     {
         Task<TResult> QueryAsync(TQuery query);
     }

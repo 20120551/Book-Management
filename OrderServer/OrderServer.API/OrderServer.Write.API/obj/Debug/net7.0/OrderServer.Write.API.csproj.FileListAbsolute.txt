@@ -1,3 +1,9 @@
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\OrderServer.Write.API.csproj.AssemblyReference.cache
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\OrderServer.Write.API.GeneratedMSBuildEditorConfig.editorconfig
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\OrderServer.Write.API.AssemblyInfoInputs.cache
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\OrderServer.Write.API.AssemblyInfo.cs
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\OrderServer.Write.API.csproj.CoreCompileInputs.cache
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\OrderServer.Write.API.MvcApplicationPartsAssemblyInfo.cache
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\appsettings.Development.json
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\appsettings.json
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\OrderServer.Write.API.exe
@@ -8,9 +14,11 @@ D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.W
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\AWSSDK.Core.dll
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\AWSSDK.SecurityToken.dll
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\DnsClient.dll
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\Humanizer.dll
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Binder.dll
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
@@ -19,6 +27,7 @@ D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.W
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\MongoDB.Driver.dll
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\MongoDB.Driver.Core.dll
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\MongoDB.Libmongocrypt.dll
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\Mono.TextTemplating.dll
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\Newtonsoft.Json.dll
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\Npgsql.dll
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
@@ -31,6 +40,7 @@ D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.W
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\System.CodeDom.dll
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\ZstdSharp.dll
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\runtimes\linux\native\libmongocrypt.so
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\runtimes\osx\native\libmongocrypt.dylib
@@ -43,13 +53,6 @@ D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.W
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\OrderServer.Application.pdb
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\OrderServer.Domain.pdb
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\OrderServer.Shared.pdb
-D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\OrderServer.Write.API.csproj.AssemblyReference.cache
-D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\OrderServer.Write.API.GeneratedMSBuildEditorConfig.editorconfig
-D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\OrderServer.Write.API.AssemblyInfoInputs.cache
-D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\OrderServer.Write.API.AssemblyInfo.cs
-D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\OrderServer.Write.API.csproj.CoreCompileInputs.cache
-D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\OrderServer.Write.API.MvcApplicationPartsAssemblyInfo.cs
-D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\OrderServer.Write.API.MvcApplicationPartsAssemblyInfo.cache
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\staticwebassets\msbuild.OrderServer.Write.API.Microsoft.AspNetCore.StaticWebAssets.props
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\staticwebassets\msbuild.build.OrderServer.Write.API.props
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.OrderServer.Write.API.props
@@ -64,7 +67,4 @@ D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.W
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\OrderServer.Write.API.pdb
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\OrderServer.Write.API.genruntimeconfig.cache
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\ref\OrderServer.Write.API.dll
-D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\Humanizer.dll
-D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
-D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\Mono.TextTemplating.dll
-D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\System.CodeDom.dll
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\OrderServer.Write.API.MvcApplicationPartsAssemblyInfo.cs

@@ -1,17 +1,46 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using OrderServer.Shared.Dispatcher.Commands;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using OrderServer.Application.Queries;
+using OrderServer.Read.API.Middlewares;
+using OrderServer.Shared.Dispatcher.Queries;
+using System.Security.Claims;
 
 namespace OrderServer.Read.API.Controllers
 {
-    [Route("api/[controllers]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class OrderController : ControllerBase
     {
-        private readonly ICommandDispatcher _commandDispatcher;
+        private readonly IQueryDispatcher _queryDispatcher;
         public OrderController(
-            ICommandDispatcher commandDispatcher)
+            IQueryDispatcher queryDispatcher)
         {
-            _commandDispatcher = commandDispatcher;
+            _queryDispatcher = queryDispatcher;
+        }
+
+        [Authorize(AuthenticationSchemes = "KONG_AUTHENTICATION_SCHEME")]
+        [HttpGet]
+        public async Task<ActionResult> GetAll()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "";
+            var query = new GetOrders(new Guid(userId));
+
+            var result = await _queryDispatcher.DispatchAsync(query);
+
+            return Ok(result);
+        }
+
+        [Authorize(AuthenticationSchemes = "KONG_AUTHENTICATION_SCHEME")]
+        [ServiceFilter(typeof(OrderAuthorizationMiddleware))]
+        [HttpGet("{orderId}")]
+        public async Task<ActionResult> Get([FromRoute] string orderId)
+        {
+            // check order of user
+            var query = new GetOrder(new Guid(orderId));
+
+            var result = await _queryDispatcher.DispatchAsync(query);
+
+            return Ok(result);
         }
     }
 }

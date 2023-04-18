@@ -10,6 +10,6 @@ namespace OrderServer.Shared.Queries
     {
     }
 
-    public interface IQuery<TResult> : IQuery
+    public interface IQuery<TResult> : IQuery where TResult : class
     { }
 }
