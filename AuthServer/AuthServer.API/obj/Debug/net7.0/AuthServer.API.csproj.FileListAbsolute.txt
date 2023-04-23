@@ -101,3 +101,4 @@ D:\SOURCE CODE\Project\MovieManagement\AuthServer\AuthServer.API\bin\Debug\net7.
 D:\SOURCE CODE\Project\MovieManagement\AuthServer\AuthServer.API\bin\Debug\net7.0\BouncyCastle.Crypto.dll
 D:\SOURCE CODE\Project\MovieManagement\AuthServer\AuthServer.API\bin\Debug\net7.0\StackExchange.Redis.dll
 D:\SOURCE CODE\Project\MovieManagement\AuthServer\AuthServer.API\bin\Debug\net7.0\Twilio.dll
+D:\SOURCE CODE\Project\MovieManagement\AuthServer\AuthServer.API\bin\Debug\net7.0\RabbitMQ.Client.dll

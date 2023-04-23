@@ -24,11 +24,11 @@ public class KongAuthenticationHandler : AuthenticationHandler<KongAuthenticatio
         _httpContextAccessor = httpContextAccessor;
     }
 
-    protected async override Task<AuthenticateResult> HandleAuthenticateAsync()
+    protected override Task<AuthenticateResult> HandleAuthenticateAsync()
     {
         if (Request.Headers["X-AUTHENTICATED"] == StringValues.Empty || Request.Headers["X-AUTHENTICATED"] == false)
         {
-            return AuthenticateResult.Fail("Not Authentication");
+            return Task.FromResult(AuthenticateResult.Fail("Not Authentication"));
         }
 
         var userId = (string)Request.Headers["X-USER-ID"]!;
@@ -64,10 +64,6 @@ public class KongAuthenticationHandler : AuthenticationHandler<KongAuthenticatio
 
         var principal = new ClaimsPrincipal(identity);
 
-        //assign http context .user
-        await _httpContextAccessor?.HttpContext?.SignInAsync(
-            AuthenticationSchemeConstants.KONG_AUTHENTICATION_SCHEME, principal)!;
-
-        return AuthenticateResult.Success(new AuthenticationTicket(principal, Scheme.Name));
+        return Task.FromResult(AuthenticateResult.Success(new AuthenticationTicket(principal, Scheme.Name)));
     }
 }

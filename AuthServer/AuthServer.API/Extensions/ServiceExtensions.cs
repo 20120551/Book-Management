@@ -6,6 +6,7 @@ using AuthServer.API.Subscribers.Interfaces;
 using AuthServer.API.Subscribers.Services;
 using MongoDB.Driver;
 using StackExchange.Redis;
+using RabbitMQ.Client;
 
 namespace AuthServer.API.Extensions;
 
@@ -51,6 +52,28 @@ public static class ServiceExtensions
     {
         services.AddSingleton<IStreamingSubscriber, StreamingSubscriber>();
         services.AddSingleton<IStreamingPublisher, StreamingPublisher>();
+        return services;
+    }
+
+    public static IServiceCollection AddRabbitMq(this IServiceCollection services, IConfiguration configuration)
+    {
+        // bind options
+        var section = configuration.GetSection("RabbitMq");
+        var options = new RabbitMqConfig();
+        section.Bind(options);
+
+        // get connection
+        var factory = new ConnectionFactory()
+        {
+            HostName = options.HostName,
+            Port = options.Port
+        };
+
+        var rabbitMq = factory.CreateConnection();
+
+        // add singleton
+        services.AddSingleton<IConnection>(rabbitMq);
+        services.AddSingleton<IPublisher, Publisher.Services.Publisher>();
         return services;
     }
 }

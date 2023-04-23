@@ -55,6 +55,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddRedis(builder.Configuration);
 builder.Services.AddMongoDb(builder.Configuration);
 builder.Services.AddStreamingService();
+builder.Services.AddRabbitMq(builder.Configuration);
 
 //add background job services
 builder.Services.AddHostedService<StreamingBackgroundService>();

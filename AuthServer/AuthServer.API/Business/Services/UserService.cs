@@ -1,13 +1,15 @@
 using AuthServer.API.Business.Interfaces;
 using AuthServer.API.DataAccess.Interfaces;
+using AuthServer.API.Dto.Event;
 using AuthServer.API.Dto.Token;
 using AuthServer.API.Dto.User;
 using AuthServer.API.Exceptions.Handler;
 using AuthServer.API.Models;
 using AuthServer.API.Policies.Authentication.Interfaces;
+using AuthServer.API.Publisher.Interfaces;
 using AuthServer.API.Utils;
 using AutoMapper;
-using Jose;
+using RabbitMQ.Client;
 
 namespace AuthServer.API.Business.Services;
 
@@ -20,6 +22,7 @@ public class UserService : IUserService
     private readonly IRoleRepo _roleRepo;
     private readonly IPublicKeyStoreRepo _publicKeyStoreJwkRepo;
     private readonly IMapper _mapper;
+    private readonly IPublisher _publisher;
 
     public UserService(
         IUserRepo userRepo,
@@ -28,7 +31,8 @@ public class UserService : IUserService
         ITokenGenerator tokenGenerator,
         IRoleRepo roleRepo,
         IPublicKeyStoreRepo publicKeyStoreJwkRepo,
-        IMapper mapper)
+        IMapper mapper,
+        IPublisher publisher)
     {
         _userRepo = userRepo;
         _passwordHasher = passwordHasher;
@@ -37,6 +41,7 @@ public class UserService : IUserService
         _roleRepo = roleRepo;
         _publicKeyStoreJwkRepo = publicKeyStoreJwkRepo;
         _mapper = mapper;
+        _publisher = publisher;
     }
 
     public async Task<UserReadDto> Activate(UserActivatedDto userRequest, string? otp, string userId)
@@ -49,6 +54,10 @@ public class UserService : IUserService
         await _userRepo.Update(user);
 
         var userResponse = _mapper.Map<UserReadDto>(user);
+
+        // publish event
+        var @event = new UserCreated(Guid.Parse(user.Id), user.Username, user.Firstname!, user.Lastname!);
+        await _publisher.PublishAsync("user", ExchangeType.Topic, "user.created", @event);
         return userResponse;
     }
 
@@ -174,6 +183,11 @@ public class UserService : IUserService
             throw new DomainBadRequestException("user was not found");
         }
         await _userRepo.Delete(user);
+
+
+        // publish event
+        var @event = new UserDeleted(Guid.Parse(user.Id));
+        await _publisher.PublishAsync("user", ExchangeType.Topic, "user.deleted", @event);
     }
 
     public async Task<UserReadDto> DeleteRole(string id, UserRoleDto role)
@@ -336,6 +350,10 @@ public class UserService : IUserService
         _mapper.Map<UserUpdateDto, User>(userRequest, user);
         await _userRepo.Update(user);
         var userResponse = _mapper.Map<UserReadDto>(user);
+
+        // publish event
+        var @event = new UserUpdated(Guid.Parse(user.Id), user.Firstname!, user.Lastname!);
+        await _publisher.PublishAsync("user", ExchangeType.Topic, "user.updated", @event);
         return userResponse;
     }
 

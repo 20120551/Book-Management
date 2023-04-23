@@ -4,8 +4,8 @@ static public class RandomString
 {
     public static string GenerateIdWithPrefix(string prefix)
     {
-        var guid = Guid.NewGuid().ToString().Split('-')[0];
-        return $"{prefix}{guid}";
+        var guid = Guid.NewGuid();
+        return $"{guid}";
     }
     public static string GenerateOTP(int len)
     {

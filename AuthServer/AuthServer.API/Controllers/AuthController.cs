@@ -50,7 +50,7 @@ public class AuthController : ControllerBase
 
         var protectOtp = RandomString.GenerateOTP(4);
         //store userId to session
-        Response.HttpContext.Session.SetString("otp_tracking", $"{user.Id}-{protectOtp}");
+        Response.HttpContext.Session.SetString("otp_tracking", $"{user.Id}_{protectOtp}");
         Response.HttpContext.Session.SetString("type", mailType);
 
         //cache otp 
@@ -62,8 +62,8 @@ public class AuthController : ControllerBase
     [HttpPost("activate")]
     public async Task<ActionResult<UserReadDto>> Activate([FromBody] UserActivatedDto userRequest)
     {
-        var session = Request.HttpContext.Session.GetString("otp_tracking") ?? "-";
-        var (userId, protectOtp, rest) = session.Split("-");
+        var session = Request.HttpContext.Session.GetString("otp_tracking") ?? "_";
+        var (userId, protectOtp, rest) = session.Split("_");
 
         var otp = await _cacheService.GetData<string>($"{userId}_{protectOtp}");
 
@@ -83,10 +83,10 @@ public class AuthController : ControllerBase
     public async Task<ActionResult> ResendEmail()
     {
         //get user, if not found then return bad request
-        var session = Request.HttpContext.Session.GetString("otp_tracking") ?? "-";
+        var session = Request.HttpContext.Session.GetString("otp_tracking") ?? "_";
         var mailType = Request.HttpContext.Session.GetString("type");
 
-        var (userId, protectOtp, rest) = session.Split("-");
+        var (userId, protectOtp, rest) = session.Split("_");
 
         var user = await _userService.Get(userId!);
 
@@ -111,7 +111,7 @@ public class AuthController : ControllerBase
         //store userId to session
         var _protectOtp = RandomString.GenerateOTP(4);
 
-        Response.HttpContext.Session.SetString("otp_tracking", $"{user.Id}-{_protectOtp}");
+        Response.HttpContext.Session.SetString("otp_tracking", $"{user.Id}_{_protectOtp}");
         Response.HttpContext.Session.SetString("type", mailType!);
 
         //cache otp 
@@ -141,7 +141,7 @@ public class AuthController : ControllerBase
 
         var protectOtp = RandomString.GenerateOTP(4);
         //store userId to session
-        Response.HttpContext.Session.SetString("otp_tracking", $"{user.Id}-{protectOtp}");
+        Response.HttpContext.Session.SetString("otp_tracking", $"{user.Id}_{protectOtp}");
         Response.HttpContext.Session.SetString("type", mailType);
 
 
@@ -154,8 +154,8 @@ public class AuthController : ControllerBase
     [HttpPost("forgot/verify")]
     public async Task<ActionResult<UserReadDto>> VerifyOtp([FromBody] UserActivatedDto userRequest)
     {
-        var session = Request.HttpContext.Session.GetString("otp_tracking") ?? "-";
-        var (userId, protectOtp, rest) = session.Split("-");
+        var session = Request.HttpContext.Session.GetString("otp_tracking") ?? "_";
+        var (userId, protectOtp, rest) = session.Split("_");
 
         var otp = await _cacheService.GetData<string>($"{userId}_{protectOtp}");
 
