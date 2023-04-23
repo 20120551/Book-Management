@@ -29,9 +29,12 @@ namespace OrderServer.Write.API.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "";
 
             var command = new CreateOrder(
-                new Guid(cartId), Guid.NewGuid(), new Guid(userId));
+                Guid.Parse(cartId), Guid.NewGuid(), Guid.Parse(userId));
 
             await _commandDispatcher.DispatchAsync(command);
+
+            // clear cookie
+            Response.Cookies.Delete("cart_id");
 
             return Ok(new {Message = "Create success", Redirect_link = "http://localhost:5003/api/order"});
         }
@@ -43,7 +46,7 @@ namespace OrderServer.Write.API.Controllers
         public async Task<IActionResult> Update([FromRoute]string orderId, [FromBody] OrderUpdatedRequest request)
         {
             // check order of user
-            var command = new UpdateOrder(new Guid(orderId), request.State);
+            var command = new UpdateOrder(Guid.Parse(orderId), request.State);
 
             await _commandDispatcher.DispatchAsync(command);
 
@@ -57,7 +60,7 @@ namespace OrderServer.Write.API.Controllers
         public async Task<IActionResult> Delete([FromRoute] string orderId)
         {
             // check order of user
-            var command = new DeleteOrder(new Guid(orderId));
+            var command = new DeleteOrder(Guid.Parse(orderId));
 
             await _commandDispatcher.DispatchAsync(command);
 

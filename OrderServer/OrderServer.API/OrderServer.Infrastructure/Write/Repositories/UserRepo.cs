@@ -8,7 +8,7 @@ namespace OrderServer.Infrastructure.Write.Repositories
 {
     public class UserRepo : IUserRepo
     {
-        private readonly DbContext _context;
+        private readonly AppDbContext _context;
         private readonly DbSet<User> _users;
         public UserRepo(AppDbContext context)
         {
@@ -18,6 +18,7 @@ namespace OrderServer.Infrastructure.Write.Repositories
         public async Task CreateAsync(User user)
         {
             await _users.AddAsync(user);
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(User user)
@@ -29,7 +30,6 @@ namespace OrderServer.Infrastructure.Write.Repositories
         public async Task<User?> GetAsync(UserId id)
         {
             var user = await _users
-                .Include(x => x.Orders)
                 .FirstOrDefaultAsync(c => c.Id == id);
             return user;
         }

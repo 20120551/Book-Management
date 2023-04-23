@@ -1,5 +1,6 @@
 using OrderServer.Application;
 using OrderServer.Infrastructure;
+using OrderServer.Read.API;
 using OrderServer.Read.API.Auths;
 using OrderServer.Shared;
 using OrderServer.Write.API.Consumers;
@@ -13,6 +14,7 @@ builder.Services.AddApplicationLayer();
 builder.Services.AddReadInfrastructure();
 builder.Services.AddHostedService<UserConsumer>();
 builder.Services.AddHostedService<OrderConsumer>();
+builder.Services.AddHostedService<AppInitializer>();
 
 // add authentication
 builder.Services.AddAuthentication(options =>

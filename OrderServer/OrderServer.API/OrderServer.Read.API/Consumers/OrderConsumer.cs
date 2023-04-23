@@ -20,17 +20,17 @@ namespace OrderServer.Write.API.Consumers
             var subscriber = scope.ServiceProvider.GetService<ISubscriber>()!;
             var eventDispatcher = scope.ServiceProvider.GetService<IEventDispatcher>()!;
 
-            await subscriber.ConsumeAsync<OrderCreated>("order", ExchangeType.Topic, "user.created", async (data) =>
+            await subscriber.ConsumeAsync<OrderCreated>("order", ExchangeType.Topic, "order.created.#", async (data) =>
             {
                 await eventDispatcher.DispatchAsync(data);   
             });
 
-            await subscriber.ConsumeAsync<OrderUpdated>("order", ExchangeType.Topic, "user.updated.*", async (data) =>
+            await subscriber.ConsumeAsync<OrderUpdated>("order", ExchangeType.Topic, "order.updated.#", async (data) =>
             {
                 await eventDispatcher.DispatchAsync(data);
             });
 
-            await subscriber.ConsumeAsync<OrderDeleted>("order", ExchangeType.Topic, "user.deleted", async (data) =>
+            await subscriber.ConsumeAsync<OrderDeleted>("order", ExchangeType.Topic, "order.deleted.#", async (data) =>
             {
                 await eventDispatcher.DispatchAsync(data);
             });

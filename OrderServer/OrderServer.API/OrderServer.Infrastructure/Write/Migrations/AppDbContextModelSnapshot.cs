@@ -31,10 +31,11 @@ namespace OrderServer.Infrastructure.Write.Migrations
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("_receiverId")
+                    b.Property<Guid?>("_receiverId")
                         .HasColumnType("uuid");
 
-                    b.Property<string>("_status")
+                    b.Property<string>("_state")
+                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("Status");
 
@@ -78,15 +79,14 @@ namespace OrderServer.Infrastructure.Write.Migrations
             modelBuilder.Entity("OrderServer.Domain.ValueObjects.MovieItem", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("OrderId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<Guid?>("OrderId")
-                        .HasColumnType("uuid");
 
                     b.Property<float>("Price")
                         .HasColumnType("real");
@@ -98,7 +98,7 @@ namespace OrderServer.Infrastructure.Write.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id", "OrderId");
 
                     b.HasIndex("OrderId");
 
@@ -133,14 +133,12 @@ namespace OrderServer.Infrastructure.Write.Migrations
                     b.HasOne("OrderServer.Domain.Entities.User", "User")
                         .WithMany("Orders")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.HasOne("OrderServer.Domain.ValueObjects.Receiver", "_receiver")
                         .WithMany()
-                        .HasForeignKey("_receiverId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("_receiverId");
 
                     b.Navigation("User");
 
@@ -151,7 +149,9 @@ namespace OrderServer.Infrastructure.Write.Migrations
                 {
                     b.HasOne("OrderServer.Domain.Entities.Order", null)
                         .WithMany("_movies")
-                        .HasForeignKey("OrderId");
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("OrderServer.Domain.Entities.Order", b =>

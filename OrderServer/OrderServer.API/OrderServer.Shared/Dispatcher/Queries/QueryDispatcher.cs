@@ -16,7 +16,7 @@ namespace OrderServer.Shared.Dispatcher.Queries
         {
             _serviceProvider= serviceProvider;
         }
-        public Task<TResult> DispatchAsync<TResult>(IQuery<TResult> query) where TResult : class
+        public async Task<TResult> DispatchAsync<TResult>(IQuery<TResult> query) where TResult : class
         {
             using var scope = _serviceProvider.CreateScope();
             // make type
@@ -26,7 +26,8 @@ namespace OrderServer.Shared.Dispatcher.Queries
             // get method
             var handleAsyncMethod = handlerType.GetMethod(nameof(IQueryHandler<IQuery<TResult>,TResult>.QueryAsync))!;
 
-            return (Task<TResult>)handleAsyncMethod.Invoke(handler, new object[] { query })!;
+            var result = await (Task<TResult>)handleAsyncMethod.Invoke(handler, new object[] { query })!;
+            return result;
         }
     }
 }

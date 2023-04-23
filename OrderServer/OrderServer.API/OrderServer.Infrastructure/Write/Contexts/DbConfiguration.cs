@@ -20,7 +20,7 @@ namespace OrderServer.Infrastructure.Write.Contexts
              .Property(x => x.Id)
              .HasConversion(id => id.Id, id => new OrderId(id));
             builder
-                .Property(typeof(string), "_status")
+                .Property(typeof(string), "_state")
                 .HasColumnName("Status");
             builder
                 .Property(typeof(float), "_totalPrice")
@@ -72,6 +72,7 @@ namespace OrderServer.Infrastructure.Write.Contexts
 
             // add constrain
             builder.HasMany(typeof(Order), "Orders");
+
             // create table
             builder.ToTable("user");
         }
@@ -79,7 +80,7 @@ namespace OrderServer.Infrastructure.Write.Contexts
         public void Configure(EntityTypeBuilder<MovieItem> builder)
         {
             // set key
-            builder.HasKey(x => x.Id);
+            builder.HasKey(x => new { x.Id, x.OrderId });
             // add convension
             builder.Property(x => x.Id);
             builder
@@ -90,6 +91,9 @@ namespace OrderServer.Infrastructure.Write.Contexts
                 .Property(x => x.Seat);
             builder
                 .Property(x => x.Price);
+            builder
+                .Property(x => x.OrderId)
+                .HasConversion(id => id.Id, id => new OrderId(id));
 
             // to table
             builder.ToTable("movie");

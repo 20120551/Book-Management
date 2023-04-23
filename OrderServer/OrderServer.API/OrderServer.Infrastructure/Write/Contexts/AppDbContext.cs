@@ -17,6 +17,14 @@ namespace OrderServer.Infrastructure.Write.Contexts
             modelBuilder.ApplyConfiguration<Receiver>(configuration);
             modelBuilder.ApplyConfiguration<MovieItem>(configuration);
             modelBuilder.ApplyConfiguration<User>(configuration);
+
+            // force delete
+            modelBuilder
+                .Entity<User>()
+                .HasMany(e => e.Orders)
+                .WithOne(o => o.User)
+                .HasForeignKey(o => o.UserId)
+                .OnDelete(DeleteBehavior.ClientCascade);
         }
     }
 }

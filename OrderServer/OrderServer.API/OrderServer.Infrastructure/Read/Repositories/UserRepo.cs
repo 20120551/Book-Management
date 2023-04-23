@@ -27,10 +27,9 @@ namespace OrderServer.Infrastructure.Read.Repositories
         {
             var result = _userCollection.Aggregate()
                 .Match(u => u.Id == id)
-                .Lookup<Order, User?>("order", "Orders", "Id", "order")
+                //.Lookup<Order, User?>("order", "Orders", "Id", "order")
                 .FirstOrDefaultAsync();
 
-            Console.Out.WriteLine(result);
             return result;
         }
 

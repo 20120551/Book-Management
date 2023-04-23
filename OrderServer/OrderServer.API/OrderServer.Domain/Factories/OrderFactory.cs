@@ -18,5 +18,7 @@ namespace OrderServer.Domain.Factories
             order.AddMovies(movies);
             return order;
         }
+
+        public Order Create(OrderId id, Receiver receiver) => new(id, receiver);
     }
 }

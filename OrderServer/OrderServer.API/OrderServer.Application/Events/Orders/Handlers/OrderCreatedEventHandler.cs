@@ -16,27 +16,24 @@ namespace OrderServer.Application.Events.Orders.Handlers
             IUserRepo userRepo,
             IOrderFactory orderFactory)
         {
-            _orderFactory = orderFactory; 
-            _userRepo = userRepo;
+            _orderFactory = orderFactory;
             _orderRepo = orderRepo;
+            _userRepo = userRepo;
         }
         public async Task HandleAsync(OrderCreated @event)
         {
             var (OrderId, MovieItems, Receiver, User) = @event;
-            // check order exist or not
-            var order = await _orderRepo.GetAsync(OrderId);
-            if(order is not null)
-            {
-                // throw exception
-                throw new ExistOrderException();
-            }
+            var user = await _userRepo.GetAsync(User.UserId);
+
             // create order (on read side)
-            var _order = _orderFactory.Create(OrderId, Receiver, User, MovieItems);
+            var _order = _orderFactory.Create(OrderId, Receiver);
+            _order.AddMovies(MovieItems);
             // create
             await _orderRepo.CreateAsync(_order);
 
-            // add order to user table
-            await _userRepo.UpdateAsync(User);
+            // update user
+            user.AddOrder(_order);
+            await _userRepo.UpdateAsync(user);
         }
     }
 }

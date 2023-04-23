@@ -28,15 +28,13 @@ namespace OrderServer.Domain.Entities
     public class Order
     {
         public OrderId Id { get; private set; }
-        private string _state { get; set; }
-        private float _totalPrice { get; set; }
-        private Receiver _receiver { get; set; }
-        private ICollection<MovieItem> _movies { get; set; } = new List<MovieItem>();
+        private string _state;
+        private float _totalPrice;
+        private Receiver _receiver;
+        private ICollection<MovieItem> _movies = new List<MovieItem>();
         // receiver
         public User User { get; set; }
         public UserId UserId { get; set; }
-        //payment
-        private Guid _paymentId { get; set; }
 
         private Order() { }
         internal Order(OrderId id, Receiver receiver, User user)
@@ -52,7 +50,19 @@ namespace OrderServer.Domain.Entities
             UserId = user.Id;
 
             // caclculate total price
-            _calculateTotalPrice();
+            _totalPrice = _calculateTotalPrice();
+        }
+
+        internal Order(OrderId id, Receiver receiver)
+        {
+            Id = id;
+            _receiver = receiver;
+
+            // default state
+            _state = StateEnum.Created.ToString();
+
+            // caclculate total price
+            _totalPrice = _calculateTotalPrice();
         }
 
         //method
@@ -98,27 +108,14 @@ namespace OrderServer.Domain.Entities
         /// <summary>
         /// CalculateTotalPrice
         /// </summary>
-        private void _calculateTotalPrice()
+        private float _calculateTotalPrice()
         {
+            float result = 0;
             foreach (var movie in _movies)
             {
-                _totalPrice += movie.Price;
+                result += movie.Price * movie.Quantity;
             }
-        }
-
-        /// <summary>
-        /// UpdatePaymentId
-        /// </summary>
-        /// <param name="paymentId"></param>
-        /// <exception cref="EmptyPaymentIdException"></exception>
-        public void UpdatePaymentId(Guid id)
-        {
-            if (id == Guid.Empty)
-            {
-                // throw exception
-                throw new EmptyPaymentIdException();
-            }
-            _paymentId = id;
+            return result;
         }
     }
 }

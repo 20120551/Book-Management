@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "JK18KXTy/pdENYz3YNv/rhYzBU9Ex1wQIWvQ8Hz2pJcdg0a61RjSwU/W9dgB+Nxm7pwVKPQUsSq9+vBG+0HEtA==",
+  "dgSpecHash": "oTdx7FlCsF8PQMyNTOp9lGc9DYy/9oXUb3gyJbXM2BqxKo+XiuZlKiCasjyTrd0U+AuCUqmfOkhJ6XwN5blzcQ==",
   "success": true,
   "projectFilePath": "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Infrastructure\\OrderServer.Infrastructure.csproj",
   "expectedPackageFiles": [

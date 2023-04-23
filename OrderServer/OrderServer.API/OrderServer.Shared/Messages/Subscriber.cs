@@ -20,8 +20,9 @@ namespace OrderServer.Shared.Messages
         }
         public Task ConsumeAsync<TEvent>(string exchange, string type, string bindingKey, Action<TEvent> handler) where TEvent : IEvent
         {
+            Console.WriteLine($"Consume event at exchange {exchange} type {type} with binding key {bindingKey}");
             //create channel
-            using var channel = _connection.CreateModel();
+            var channel = _connection.CreateModel();
             //assert exchange
             channel.ExchangeDeclare(exchange, type);
             var queue = channel.QueueDeclare().QueueName;
@@ -34,6 +35,7 @@ namespace OrderServer.Shared.Messages
             var consumer = new EventingBasicConsumer(channel);
             consumer.Received += (model, eventArgs) =>
             {
+                Console.WriteLine($"Consume message on event {typeof(TEvent)}");
                 var body = eventArgs.Body.ToArray();
                 var message = Encoding.UTF8.GetString(body);
                 // deserialize data

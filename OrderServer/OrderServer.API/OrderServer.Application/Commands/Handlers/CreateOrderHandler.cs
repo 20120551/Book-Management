@@ -35,9 +35,9 @@ namespace OrderServer.Application.Commands.Handlers
             _publisher = publisher;
         }
 
-        async Task ICommandHandler<CreateOrder>.HandleAsync(CreateOrder command)
+        public async Task HandleAsync(CreateOrder command)
         {
-            (Guid UserId, Guid CartId, Guid OrderId) = command;
+            (Guid CartId, Guid OrderId, Guid UserId) = command;
             // get cart by id
             var cart = await _cartRepo.GetAsync(CartId);
             if(cart is null)
@@ -59,13 +59,11 @@ namespace OrderServer.Application.Commands.Handlers
             
             // create order in database
             await _orderRepo.CreateAsync(order);
-
-            // add order to user
-            user.AddOrder(order);
-            await _userRepo.UpdateAsync(user);
+            await _cartRepo.DeleteAsync(cart);
 
             // publish event
-            var @event = new OrderCreated(OrderId, cart.MovieItems, cart.Receiver, user);
+            var _user = new EUser(user.Id, user.Username);
+            var @event = new OrderCreated(OrderId, cart.MovieItems, cart.Receiver, _user);
             await _publisher.PublishAsync(
                 "order", ExchangeType.Topic, "order.created", @event);
         }

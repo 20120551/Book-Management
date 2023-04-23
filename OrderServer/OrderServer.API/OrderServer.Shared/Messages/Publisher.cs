@@ -19,11 +19,12 @@ namespace OrderServer.Shared.Messages
         }
         public Task PublishAsync<TEvent>(string exchange, string type, string routingKey, TEvent data) where TEvent : IEvent
         {
+            Console.WriteLine($"Publishing message on exchange {exchange} type {type} with routing key {routingKey}");
             using var channel = _connection.CreateModel();
             // assert exchange
             channel.ExchangeDeclare(exchange, type);
             // serialize data
-            var serializeData = JsonConvert.SerializeObject(data);
+            var serializeData = JsonConvert.SerializeObject(data, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
             // bufferize
             var message = Encoding.UTF8.GetBytes(serializeData);
             // send message

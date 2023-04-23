@@ -22,7 +22,7 @@ namespace OrderServer.Read.API.Middlewares
             var userId = context.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)!;
 
             // get user
-            var user = await _userRepo.GetAsync(new Guid(userId));
+            var user = await _userRepo.GetAsync(Guid.Parse(userId));
 
             // check order in user
             if(user is null)
@@ -32,7 +32,7 @@ namespace OrderServer.Read.API.Middlewares
                 return;
             }
 
-            var order = user?.GetOrder(new Guid(orderId!));
+            var order = user?.GetOrder(Guid.Parse(orderId!));
             if(order is null)
             {
                 // return 403

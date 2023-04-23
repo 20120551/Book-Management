@@ -14,6 +14,7 @@ namespace OrderServer.Domain.ValueObjects
             Guid = id;
         }
 
+        public static implicit operator CartId(string id) => new(Guid.Parse(id));
         public static implicit operator Guid(CartId id) => id.Guid;
         public static implicit operator CartId(Guid id) => new(id);
     }

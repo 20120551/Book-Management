@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "B51uR6KsZIw27XlwZwJYxOZA2FMH3L13jb2yfi7HAH60rEij1YsTuhwDkqRs+aUWCZ7pnKuSFslqyoa6G6/Vrg==",
+  "dgSpecHash": "Wb3msAxD52uOIXKfoDmzhjh4tocN/mwD5ECmWYk8Shp/VxdycvrA3uX0uvyRKLy0bdk65ySOc+04A6AaBFSP6Q==",
   "success": true,
   "projectFilePath": "D:\\SOURCE CODE\\Project\\MovieManagement\\OrderServer\\OrderServer.API\\OrderServer.Application\\OrderServer.Application.csproj",
   "expectedPackageFiles": [
@@ -25,6 +25,7 @@
     "C:\\Users\\MODERN 15\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
     "C:\\Users\\MODERN 15\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\MODERN 15\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
+    "C:\\Users\\MODERN 15\\.nuget\\packages\\mongodb.bson\\2.19.1\\mongodb.bson.2.19.1.nupkg.sha512",
     "C:\\Users\\MODERN 15\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\MODERN 15\\.nuget\\packages\\npgsql\\7.0.2\\npgsql.7.0.2.nupkg.sha512",
     "C:\\Users\\MODERN 15\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.3\\npgsql.entityframeworkcore.postgresql.7.0.3.nupkg.sha512",

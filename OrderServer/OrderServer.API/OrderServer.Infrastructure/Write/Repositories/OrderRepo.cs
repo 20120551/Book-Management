@@ -9,7 +9,7 @@ namespace OrderServer.Infrastructure.Write.Repositories
     public class OrderRepo : IOrderRepo
     {
         private readonly DbSet<Order> _orders;
-        private readonly DbContext _context;
+        private readonly AppDbContext _context;
         public OrderRepo(AppDbContext context)
         {
             _orders = context.Orders;
@@ -18,6 +18,7 @@ namespace OrderServer.Infrastructure.Write.Repositories
         public async Task CreateAsync(Order order)
         {
             await _orders.AddAsync(order);
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(Order order)

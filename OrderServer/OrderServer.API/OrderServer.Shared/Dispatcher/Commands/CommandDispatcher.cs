@@ -16,13 +16,13 @@ namespace OrderServer.Shared.Dispatcher.Commands
         {
             _serviceProvider = serviceProvider;
         }
-        public Task DispatchAsync<TCommand>(TCommand command) where TCommand : ICommand
+        public async Task DispatchAsync<TCommand>(TCommand command) where TCommand : ICommand
         {
             // get service 
             using var scope = _serviceProvider.CreateScope();
             var handler = scope.ServiceProvider.GetService<ICommandHandler<TCommand>>()!;
             // handle async
-            return handler.HandleAsync(command);
+            await handler.HandleAsync(command);
         }
     }
 }

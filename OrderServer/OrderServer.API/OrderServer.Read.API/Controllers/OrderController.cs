@@ -23,7 +23,7 @@ namespace OrderServer.Read.API.Controllers
         public async Task<ActionResult> GetAll()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "";
-            var query = new GetOrders(new Guid(userId));
+            var query = new GetOrders(Guid.Parse(userId));
 
             var result = await _queryDispatcher.DispatchAsync(query);
 
@@ -36,7 +36,7 @@ namespace OrderServer.Read.API.Controllers
         public async Task<ActionResult> Get([FromRoute] string orderId)
         {
             // check order of user
-            var query = new GetOrder(new Guid(orderId));
+            var query = new GetOrder(Guid.Parse(orderId));
 
             var result = await _queryDispatcher.DispatchAsync(query);
 

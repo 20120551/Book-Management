@@ -16,13 +16,13 @@ namespace OrderServer.Shared.Dispatcher.Events
         {
             _serviceProvider= serviceProvider;
         }
-        public Task DispatchAsync<TEvent>(TEvent @event) where TEvent : IEvent
+        public async Task DispatchAsync<TEvent>(TEvent @event) where TEvent : IEvent
         {
             // create scope
-            using var scrope = _serviceProvider.CreateScope();
+            using var scope = _serviceProvider.CreateScope();
             // get handler
-            var handler = scrope.ServiceProvider.GetService<IEventHandler<TEvent>>()!;
-            return handler.HandleAsync(@event);
+            var handler = scope.ServiceProvider.GetService<IEventHandler<TEvent>>()!;
+            await handler.HandleAsync(@event);
         }
     }
 }

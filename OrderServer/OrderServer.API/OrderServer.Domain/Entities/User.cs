@@ -1,4 +1,5 @@
-﻿using OrderServer.Domain.Exceptions;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using OrderServer.Domain.Exceptions;
 using OrderServer.Domain.ValueObjects;
 using OrderServer.Shared.Domain;
 
@@ -8,8 +9,8 @@ namespace OrderServer.Domain.Entities
     {
         public UserId Id { get; private set; }
         public string Username { get; set; }
-        private string _firstName { get; set; }
-        private string _lastName { get; set; }
+        private string _firstName;
+        private string _lastName;
         public ICollection<Order> Orders { get; set; } = new List<Order>();
 
         private User() { }

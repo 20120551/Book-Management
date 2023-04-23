@@ -1,4 +1,5 @@
-﻿using OrderServer.Application.Exceptions;
+﻿using Microsoft.Extensions.DependencyInjection;
+using OrderServer.Application.Exceptions;
 using OrderServer.Domain.Factories;
 using OrderServer.Domain.Repositories;
 using OrderServer.Shared.Events;
@@ -14,6 +15,7 @@ namespace OrderServer.Application.Events.Users.Handlers
     {
         private readonly IUserRepo _userRepo;
         private readonly IUserFactory _userFactory;
+
         public UserCreatedEventHandler(
             IUserRepo userRepo,
             IUserFactory userFactory)
