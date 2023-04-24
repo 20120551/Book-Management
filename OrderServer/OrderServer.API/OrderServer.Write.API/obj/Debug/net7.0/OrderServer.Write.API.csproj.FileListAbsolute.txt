@@ -68,3 +68,5 @@ D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.W
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\OrderServer.Write.API.pdb
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\OrderServer.Write.API.genruntimeconfig.cache
 D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\obj\Debug\net7.0\ref\OrderServer.Write.API.dll
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\AutoMapper.dll
+D:\SOURCE CODE\Project\MovieManagement\OrderServer\OrderServer.API\OrderServer.Write.API\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

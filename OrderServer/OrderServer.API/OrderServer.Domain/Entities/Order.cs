@@ -28,10 +28,10 @@ namespace OrderServer.Domain.Entities
     public class Order
     {
         public OrderId Id { get; private set; }
-        private string _state;
-        private float _totalPrice;
-        private Receiver _receiver;
-        private ICollection<MovieItem> _movies = new List<MovieItem>();
+        public string _state { get; private set; }
+        public float _totalPrice { get; private set; }
+        public Receiver _receiver { get; private set; }
+        public ICollection<MovieItem> _movies { get; private set; } = new List<MovieItem>();
         // receiver
         public User User { get; set; }
         public UserId UserId { get; set; }

@@ -30,6 +30,7 @@ namespace OrderServer.Infrastructure.Write.Repositories
         public async Task<User?> GetAsync(UserId id)
         {
             var user = await _users
+                .Include(u => u.Orders)
                 .FirstOrDefaultAsync(c => c.Id == id);
             return user;
         }

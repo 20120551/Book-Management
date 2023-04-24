@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Serializers;
 using OrderServer.Domain.Entities;
 using OrderServer.Domain.ValueObjects;
 using OrderServer.Infrastructure.Read.Contexts;
-using OrderServer.Infrastructure.Read.Serializer;
+using OrderServer.Infrastructure.Read.Models;
 
 namespace OrderServer.Infrastructure.Read.Configs
 {
@@ -11,15 +11,13 @@ namespace OrderServer.Infrastructure.Read.Configs
     {
         public void Register()
         {
-            BsonClassMap.RegisterClassMap<User>(cm =>
+            BsonClassMap.RegisterClassMap<UserModel>(cm =>
             {
                 cm.AutoMap();
                 cm.GetMemberMap(c => c.Id).SetElementName("Id");
                 cm.MapProperty(c => c.Username);
-                cm.MapField("_firstName").SetElementName("FirstName");
-                cm.MapField("_lastName").SetElementName("LastName");
-                cm.MapProperty(c => c.Orders)
-                    .SetSerializer(new OrderSerializer());
+                cm.MapProperty(c => c.Orders);
+                    //.SetSerializer(new OrderSerializer());
                 // ignore mostly field on order except id
             });
         }

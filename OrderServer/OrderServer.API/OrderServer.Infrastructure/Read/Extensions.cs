@@ -1,9 +1,13 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
+using OrderServer.Domain.Entities;
+using OrderServer.Domain.Enums;
+using OrderServer.Domain.Factories;
 using OrderServer.Domain.Repositories;
 using OrderServer.Infrastructure.Read.Configs;
 using OrderServer.Infrastructure.Read.Contexts;
+using OrderServer.Infrastructure.Read.Models;
 using OrderServer.Infrastructure.Read.Options;
 using OrderServer.Infrastructure.Read.Repositories;
 using System;
@@ -59,6 +63,46 @@ namespace OrderServer.Infrastructure.Read
            );
 
             return services;
+        }
+
+        public static OrderModel AsDto(this Order order)
+        {
+            return new OrderModel { 
+                Id = order.Id, State = order._state, 
+                TotalPrice = order._totalPrice, 
+                Movies = order._movies,
+                Receiver = order._receiver };
+        }
+        public static Order AsDto(this OrderModel orderModel, IOrderFactory factory)
+        {
+            var order = factory.Create(orderModel.Id, orderModel.Receiver);
+            var state = Enum.Parse<StateEnum>(orderModel.State);
+            order.ChangeState(state);
+            order.AddMovies(orderModel.Movies);
+            return order;
+        }
+
+        public static UserModel AsDto(this User user)
+        {
+            var orders = user.Orders.Select(o => o.Id.Id).ToList();
+            return new UserModel
+            {
+                Id = user.Id,
+                Username = user.Username,
+                OrderIds = orders
+            };
+        }
+
+        public static User AsDto(this UserModel user, IUserFactory userFactory, IOrderFactory orderFactory)
+        {
+            var _user = userFactory.Create(user.Id, user.Username, "", "");
+            
+            foreach(var o in user.Orders)
+            {
+                var order = o.AsDto(orderFactory);
+                _user.AddOrder(order);
+            }
+            return _user;
         }
     }
 }

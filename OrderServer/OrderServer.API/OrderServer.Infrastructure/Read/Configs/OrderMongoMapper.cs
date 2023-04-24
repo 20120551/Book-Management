@@ -1,7 +1,6 @@
 ﻿using MongoDB.Bson.Serialization;
 using OrderServer.Domain.Entities;
-using OrderServer.Domain.ValueObjects;
-using OrderServer.Infrastructure.Read.Serializer;
+using OrderServer.Infrastructure.Read.Models;
 
 namespace OrderServer.Infrastructure.Read.Configs
 {
@@ -11,17 +10,14 @@ namespace OrderServer.Infrastructure.Read.Configs
         // remove all of information relevent to order inside user table
         public void Register()
         {
-            BsonClassMap.RegisterClassMap<Order>(cm =>
+            BsonClassMap.RegisterClassMap<OrderModel>(cm =>
             {
                 cm.AutoMap();
                 cm.MapProperty(c => c.Id).SetElementName("Id");
-                cm.MapField("_state").SetElementName("State");
-                cm.MapField("_receiver").SetElementName("Receiver");
-                cm.MapField("_totalPrice").SetElementName("TotalPrice");
-                cm.MapField("_movies")
-                    .SetElementName("Items");
-                cm.MapProperty(c => c.User).SetIgnoreIfDefault(true);
-                cm.MapProperty(c => c.UserId).SetIgnoreIfDefault(true);
+                cm.MapProperty(c => c.State);
+                cm.MapProperty(c => c.TotalPrice);
+                cm.MapProperty(c => c.Receiver);
+                cm.MapProperty(c => c.Movies);
             });
         }
     }
