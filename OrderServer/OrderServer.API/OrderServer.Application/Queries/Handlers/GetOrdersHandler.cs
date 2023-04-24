@@ -1,5 +1,7 @@
-﻿using OrderServer.Application.DTO;
+﻿using AutoMapper;
+using OrderServer.Application.DTO;
 using OrderServer.Application.Exceptions;
+using OrderServer.Domain.Entities;
 using OrderServer.Domain.Repositories;
 using OrderServer.Shared.Queries;
 
@@ -8,10 +10,14 @@ namespace OrderServer.Application.Queries.Handlers
     public class GetOrdersHandler : IQueryHandler<GetOrders, UserReadDto>
     {
         private readonly IUserRepo _userRepo;
+        private readonly IMapper _mapper;
 
-        public GetOrdersHandler(IUserRepo userRepo)
+        public GetOrdersHandler(
+            IMapper mapper,
+            IUserRepo userRepo)
         {
             _userRepo = userRepo;
+            _mapper = mapper;
         }
 
         public async Task<UserReadDto> QueryAsync(GetOrders query)
@@ -23,7 +29,8 @@ namespace OrderServer.Application.Queries.Handlers
                 throw new NotFoundUserException();
             }
             // mapper
-            return new UserReadDto();
+            var result = _mapper.Map<User, UserReadDto>(user);
+            return result;
         }
     }
 }
