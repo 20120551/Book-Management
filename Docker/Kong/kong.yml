@@ -3,11 +3,11 @@ _transform: true
 
 services:
   - name: user-api
-    url: http://authserver:5000/api/user
+    url: docker.internal.host:5000/api/user
     plugins:
       - name: rbac_jwt
         config:
-          jwk_stored_url: http://authserver:5000/api/.well-knowns
+          jwk_stored_url: docker.internal.host:5000/api/.well-knowns
           rbac_server: sql
           rbac_database: AuthServer
           rbac_database_user: sa
@@ -18,43 +18,43 @@ services:
           - /api/user
 
   - name: auth-api
-    url: http://authserver:5000/api/auth
+    url: docker.internal.host:5000/api/auth
     routes:
       - name: auth-api-router
         paths:
           - /api/auth
 
   - name: admin-api
-    url: http://authserver:5000/api/admin
+    url: docker.internal.host:5000/api/admin
     routes:
       - name: admin-api-router
         paths:
           - /api/admin
 
   - name: role-api
-    url: http://authserver:5000/api/role
+    url: docker.internal.host:5000/api/role
     routes:
       - name: role-api-router
         paths:
           - /api/role
 
   - name: permission-api
-    url: http://authserver:5000/api/permission
+    url: docker.internal.host:5000/api/permission
     routes:
       - name: permission-api-router
         paths:
           - /api/permission
 
   - name: operation-api
-    url: http://authserver:5000/api/operation
+    url: docker.internal.host:5000/api/operation
     routes:
       - name: operation-api-router
         paths:
           - /api/operation
 
   - name: jwk-api
-    url: http://authserver:5000/api/.well-knowns
+    url: docker.internal.host:5000/api/.well-knowns
     routes:
-      - name: operation-api-router
+      - name: jwk-api-router
         paths:
           - /api/.well-knowns
