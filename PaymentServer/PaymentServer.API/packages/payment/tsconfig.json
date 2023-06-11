@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "declaration": true,
+    "strict": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "composite": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "baseUrl": "src",
+    "paths": {
+      "@application/*": [
+        "application/*"
+      ],
+      "@config/*": [
+        "config/*"
+      ],
+      "@controller/*": [
+        "controller/*"
+      ],
+      "@domain/*": [
+        "domain/*"
+      ],
+      "@infrastructure/*": [
+        "infrastructure/*"
+      ],
+      "@ioc/*": [
+        "ioc/*"
+      ],
+      "@subscriber/*": [
+        "subscriber/*"
+      ]
+    }
+  },
+  "references": [
+    {
+      "path": "./../common"
+    }
+  ]
+}

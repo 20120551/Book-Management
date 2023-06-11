@@ -1,0 +1,19 @@
+{
+  "name": "payment-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "common": "npm --workspace @payment/common",
+    "payment": "npm --workspace @payment/application"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@payment/application": "file:packages/payment",
+    "@payment/common": "file:packages/common"
+  }
+}

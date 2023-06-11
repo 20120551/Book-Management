@@ -1,0 +1,31 @@
+{
+  "name": "@payment/common",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.js",
+  "scripts": {
+    "build": "tsc --build --verbose"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.10.3",
+    "axios": "^1.4.0",
+    "class-transformer": "^0.5.1",
+    "consul": "^1.2.0",
+    "inversify": "^6.0.1",
+    "module-alias": "^2.2.3",
+    "mongodb": "^5.6.0",
+    "nanoid": "^4.0.2",
+    "paypal-rest-sdk": "^1.8.1",
+    "redis": "^4.6.7",
+    "stripe": "^12.9.0",
+    "winston": "^3.9.0"
+  },
+  "devDependencies": {
+    "@types/amqplib": "^0.10.1",
+    "@types/consul": "^0.40.0",
+    "@types/paypal-rest-sdk": "^1.7.6"
+  }
+}

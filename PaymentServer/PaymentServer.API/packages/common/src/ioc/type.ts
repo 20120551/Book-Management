@@ -1,0 +1,18 @@
+export const TYPES = {
+    AmqpConnection: Symbol("amqpConnection"),
+    ILogger: Symbol("ILogger"),
+    IEventHandlerModule: Symbol("IEventHandlerModule"),
+    ContainerModule: Symbol("ContainerModule"),
+    IQueryHandlerModule: Symbol("IQueryHandlerModule"),
+    ICommandHandlerModule: Symbol("ICommandHandlerModule"),
+    RedisClient: Symbol("RedisClient"),
+    ICacheServiceModule: Symbol("ICacheServiceModule"),
+    ICommandBusModule: Symbol("ICommandBusModule"),
+    IQueryBusModule: Symbol("IQueryBusModule"),
+    IEventBusModule: Symbol("IEventBusModule"),
+    StripeClient: Symbol("StripeClient"),
+    PaypalClient: Symbol("PaypalClient"),
+    IPaymentCheckoutSessionFactoryModule: Symbol("IPaymentCheckoutSessionFactoryModule"),
+    IConsul: Symbol("IConsul"),
+    IConsulClientModule: Symbol("IConsulClientModule"),
+}
