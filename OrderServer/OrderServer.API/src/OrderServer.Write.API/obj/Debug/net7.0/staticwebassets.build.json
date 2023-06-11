@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "vnqc7GBnMx9iU1HG7axxS4XBtN8inxFUv7ltIFYRDDc=",
+  "Source": "OrderServer.Write.API",
+  "BasePath": "_content/OrderServer.Write.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

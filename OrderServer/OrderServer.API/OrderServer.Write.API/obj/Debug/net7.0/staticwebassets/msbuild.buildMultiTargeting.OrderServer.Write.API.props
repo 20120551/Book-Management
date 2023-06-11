@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\OrderServer.Write.API.props" />
-</Project>
