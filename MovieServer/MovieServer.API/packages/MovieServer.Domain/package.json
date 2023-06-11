@@ -1,0 +1,15 @@
+{
+  "name": "@movie/domain",
+  "version": "1.0.0",
+  "typings": "dist/index.d.js",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc --build --verbose"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@movie/shared": "1.0.0"
+  }
+}

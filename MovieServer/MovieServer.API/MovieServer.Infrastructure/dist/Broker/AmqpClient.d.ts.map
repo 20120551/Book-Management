@@ -1,1 +1,0 @@
-{"version":3,"file":"AmqpClient.d.ts","sourceRoot":"","sources":["../../src/Broker/AmqpClient.ts"],"names":[],"mappings":"AAAA,OAAO,IAAI,MAAM,SAAS,CAAC;AAE3B,oBAAY,cAAc,GAAG,IAAI,CAAC,UAAU,CAAC;AAC7C,oBAAY,WAAW,GAAG,IAAI,CAAC,OAAO,CAAC;AAGvC,wBAAsB,aAAa,CAAC,OAAO,EAAE,MAAM,GAAG,OAAO,CAAC,cAAc,CAAC,CAS5E"}

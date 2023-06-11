@@ -1,1 +1,0 @@
-{"version":3,"file":"Actor.d.ts","sourceRoot":"","sources":["../../src/ValueObjects/Actor.ts"],"names":[],"mappings":"AAEA,MAAM,CAAC,OAAO,OAAO,KAAK;IAKX,IAAI,EAAE,MAAM;IACZ,IAAI,EAAE,MAAM;IALvB;;OAEG;IACH,OAAO;WAUO,MAAM,CAAC,IAAI,EAAE,MAAM,EAAE,IAAI,EAAE,MAAM,GAAG,KAAK;CAG1D"}

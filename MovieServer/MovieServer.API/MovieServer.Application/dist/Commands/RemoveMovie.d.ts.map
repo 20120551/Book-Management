@@ -1,1 +1,0 @@
-{"version":3,"file":"RemoveMovie.d.ts","sourceRoot":"","sources":["../../src/Commands/RemoveMovie.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,QAAQ,EAAE,MAAM,kBAAkB,CAAC;AAE5C,MAAM,CAAC,OAAO,OAAO,WAAY,YAAW,QAAQ;IAEzC,EAAE,EAAE,MAAM,CAAC;gBAGd,EAAE,EAAE,MAAM;CAGjB"}

@@ -1,1 +1,0 @@
-{"version":3,"file":"GetMovie.d.ts","sourceRoot":"","sources":["../../src/Queries/GetMovie.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,MAAM,iBAAiB,CAAC;AACzC,OAAO,EAAE,YAAY,EAAE,MAAM,kBAAkB,CAAC;AAEhD,MAAM,CAAC,OAAO,OAAO,QAAS,YAAW,MAAM,CAAC,YAAY,CAAC;IAK9C,EAAE,EAAE,MAAM;gBAAV,EAAE,GAAE,MAAW;CAG7B"}

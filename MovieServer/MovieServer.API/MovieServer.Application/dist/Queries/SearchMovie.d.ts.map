@@ -1,1 +1,0 @@
-{"version":3,"file":"SearchMovie.d.ts","sourceRoot":"","sources":["../../src/Queries/SearchMovie.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,MAAM,iBAAiB,CAAC;AACzC,OAAO,EAAE,YAAY,EAAE,MAAM,kBAAkB,CAAC;AAEhD,MAAM,CAAC,OAAO,OAAO,WAAY,YAAW,MAAM,CAAC,YAAY,CAAC;IAEzC,WAAW,EAAE,MAAM;gBAAnB,WAAW,GAAE,MAAW;CAG9C"}

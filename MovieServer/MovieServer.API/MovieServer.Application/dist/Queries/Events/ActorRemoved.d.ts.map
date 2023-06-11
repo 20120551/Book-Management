@@ -1,1 +1,0 @@
-{"version":3,"file":"ActorRemoved.d.ts","sourceRoot":"","sources":["../../../src/Queries/Events/ActorRemoved.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,MAAM,iBAAiB,CAAC;AAEzC,MAAM,CAAC,OAAO,OAAO,YAAa,YAAW,MAAM,CAAC,IAAI,CAAC;IAE1C,EAAE,EAAE,MAAM;IACV,OAAO,EAAE,MAAM;gBADf,EAAE,EAAE,MAAM,EACV,OAAO,EAAE,MAAM;CAG7B"}

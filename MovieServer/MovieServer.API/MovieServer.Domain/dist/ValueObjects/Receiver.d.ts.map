@@ -1,1 +1,0 @@
-{"version":3,"file":"Receiver.d.ts","sourceRoot":"","sources":["../../src/ValueObjects/Receiver.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,OAAO,OAAO,QAAQ;IAEd,QAAQ,EAAE,MAAM;IAChB,OAAO,EAAE,MAAM;IACf,WAAW,EAAE,MAAM;gBAFnB,QAAQ,EAAE,MAAM,EAChB,OAAO,EAAE,MAAM,EACf,WAAW,EAAE,MAAM;CAIjC"}

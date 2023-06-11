@@ -1,0 +1,22 @@
+{
+  "name": "@movie/application",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.js",
+  "scripts": {
+    "build": "tsc --build --verbose"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@automapper/core": "^8.7.7",
+    "@movie/domain": "1.0.0",
+    "@movie/shared": "1.0.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "^9.0.2"
+  }
+}
